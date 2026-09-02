@@ -1,0 +1,108 @@
+/* ==========================================================================
+   NEXORA PULSE - RESPONSIVE BREAKPOINTS & MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Desktop & Tablet Landscape (1024px - 1279px) */
+@media (max-width: 1279px) {
+  .doctor-workspace-grid {
+    grid-template-columns: 280px 1fr 300px;
+    gap: var(--space-4);
+  }
+
+  .ocr-split-workstation {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .geo-locator-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* Tablet Portrait (768px - 1023px) */
+@media (max-width: 1023px) {
+  main.main-content {
+    padding: var(--space-4);
+  }
+
+  .app-header {
+    flex-wrap: wrap;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .role-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 6px;
+  }
+
+  .doctor-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ocr-split-workstation {
+    grid-template-columns: 1fr;
+  }
+
+  .geo-locator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-assistant-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Devices (< 767px) */
+@media (max-width: 767px) {
+  main.main-content {
+    padding: var(--space-3);
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .header-telemetry .telemetry-chip {
+    display: none;
+  }
+
+  .patient-identity-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .role-selector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ocr-canvas-container {
+    height: 380px;
+  }
+
+  .geo-radar-panel {
+    min-height: 340px;
+  }
+
+  .radar-circle.c3 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .radar-sweep-beam {
+    width: 300px;
+    height: 300px;
+  }
+
+  .auth-card {
+    max-height: 95vh;
+  }
+
+  .auth-card-body {
+    padding: var(--space-4);
+  }
+}

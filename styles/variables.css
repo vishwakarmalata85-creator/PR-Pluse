@@ -1,0 +1,99 @@
+/* ==========================================================================
+   MIRO DESIGN SYSTEM - DESIGN TOKENS (CSS VARIABLES)
+   Extracted from DESIGN.md Specification
+   ========================================================================== */
+
+:root {
+  /* Brand & Accent Colors */
+  --color-primary: #1c1c1e;
+  --color-on-primary: #ffffff;
+  --color-brand-yellow: #ffd02f;
+  --color-brand-yellow-deep: #fcb900;
+  --color-yellow-light: #fff4c4;
+  --color-yellow-dark: #746019;
+  
+  --color-brand-blue: #4262ff;
+  --color-blue-450: #5b76fe;
+  --color-blue-pressed: #2a41b6;
+  
+  --color-brand-coral: #ff9999;
+  --color-coral-light: #ffc6c6;
+  --color-coral-dark: #600000;
+  
+  --color-brand-rose: #ffd8f4;
+  --color-rose-light: #fde0f0;
+  --color-brand-pink: #fde0f0;
+  
+  --color-brand-teal: #0fbcb0;
+  --color-teal-light: #c3faf5;
+  --color-moss-dark: #187574;
+  
+  --color-brand-orange-light: #ffe6cd;
+  --color-brand-red: #fbd4d4;
+  --color-brand-red-dark: #e3c5c5;
+  --color-success-accent: #00b473;
+
+  /* Surfaces & Dividers */
+  --color-canvas: #ffffff;
+  --color-surface: #f7f8fa;
+  --color-surface-soft: #fafbfc;
+  --color-surface-yellow: #fff8e0;
+  --color-surface-pricing-featured: #f5f3ff;
+  
+  --color-hairline: #e0e2e8;
+  --color-hairline-soft: #eef0f3;
+  --color-hairline-strong: #c7cad5;
+
+  /* Typography / Inks */
+  --color-ink-deep: #050038;
+  --color-ink: #1c1c1e;
+  --color-charcoal: #2c2c34;
+  --color-slate: #555a6a;
+  --color-steel: #6b6f7e;
+  --color-stone: #8e91a0;
+  --color-muted: #a5a8b5;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #a5a8b5;
+  --color-footer-bg: #1c1c1e;
+
+  /* Typography Scale */
+  --font-family-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* Spacing Scale */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-xxl: 32px;
+  --space-section: 48px;
+  --space-section-lg: 64px;
+  --space-section-xl: 80px;
+
+  /* Radii Scale */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-xxl: 20px;
+  --radius-xxxl: 28px;
+  --radius-feature: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows Scale */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sticky: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-mockup: 0 20px 48px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-dropdown: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 24px 64px rgba(0, 0, 0, 0.14);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-spring: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
