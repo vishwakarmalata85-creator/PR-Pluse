@@ -1,0 +1,2091 @@
+{
+  "users": [
+    {
+      "id": "usr-patient-mtl467hl",
+      "email": "prathameshvishwakarma132@gmail.com",
+      "password": "$2b$10$RFmKzdWRHkwdr0h4vnNgyeWuj/iDbSYDMRUwJIaC0k9IHsLK3H/Pi",
+      "full_name": "Prathamesh",
+      "phone": "8080323361",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {},
+      "isActive": true,
+      "created_at": "2026-09-03T05:58:15.657Z",
+      "updated_at": "2026-09-03T05:58:15.657Z"
+    },
+    {
+      "id": "usr-patient-mtl3ukzy",
+      "email": "sharmarohit11@gmail.com",
+      "password": "$2b$10$gTmxr3hm/xIpkSf1DZ6Ke./4eKpZrA4AWrEBVn5YbMakdIifLFPqG",
+      "full_name": "Rohit sharma",
+      "phone": "2020321654",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {},
+      "isActive": true,
+      "created_at": "2026-09-03T05:49:13.294Z",
+      "updated_at": "2026-09-03T05:49:13.294Z"
+    },
+    {
+      "id": "usr-patient-mtl097yh",
+      "email": "rahul.patient.1788408517768@gmail.com",
+      "password": "$2b$10$K7kE1nq9Eh.xhEcEWY1.reNb4vRYbHwgIy1Eo1FFRuxZTmnsaOO/u",
+      "full_name": "Rahul Verma",
+      "phone": "",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {},
+      "isActive": true,
+      "created_at": "2026-09-03T04:08:37.769Z",
+      "updated_at": "2026-09-03T04:08:37.769Z"
+    },
+    {
+      "id": "usr-patient-mtl00wzb",
+      "email": "rahul.patient.1788408130293@gmail.com",
+      "password": "$2b$10$ZFpGcdid36hGYMFIEJxqO.mpuHUkRgxuc.dX6zL/rbpTSOAhfLUSi",
+      "full_name": "Rahul Verma",
+      "phone": "",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {},
+      "isActive": true,
+      "created_at": "2026-09-03T04:02:10.295Z",
+      "updated_at": "2026-09-03T04:02:10.295Z"
+    },
+    {
+      "id": "usr-patient-mtkzm1i9",
+      "email": "rahul.patient.1788407436321@gmail.com",
+      "password": "$2b$10$hxP4nvWUuUnmNgunIuOqTOnNhZBjLiZhHvhl/GfE4fV5oE7jVDRgW",
+      "full_name": "Rahul Verma",
+      "phone": "",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {},
+      "isActive": true,
+      "created_at": "2026-09-03T03:50:36.321Z",
+      "updated_at": "2026-09-03T03:50:36.321Z"
+    },
+    {
+      "id": "usr-patient-mtkymwkx",
+      "email": "rahul.patient.1788405796960@gmail.com",
+      "password": "$2b$10$QmdUHC9kasY3wR7Kp5eBJ.vomWeOOL8YpUGEsWBioN0q2wNxtVSTO",
+      "full_name": "Rahul Verma",
+      "phone": "+91 99887 11223",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {},
+      "pharmacy_profile": {},
+      "patient_profile": {
+        "blood_group": "O+"
+      },
+      "isActive": true,
+      "created_at": "2026-09-03T03:23:16.977Z",
+      "updated_at": "2026-09-03T03:23:17.486Z"
+    },
+    {
+      "id": "usr-doc-001",
+      "email": "dr.vikram.sethi@gmail.com",
+      "password": "$2b$10$0QKjFHK9vAaE0TIZvoKlNuPRtnriq939GGnnbp/AE0v42HEfey.Ti",
+      "full_name": "Dr. Vikram Sethi, MD",
+      "phone": "+91 98765 00001",
+      "role": "DOCTOR",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {
+        "mrn": "KMC-48921-2012",
+        "state_council": "Karnataka Medical Council (KMC)",
+        "specialization": "Internal Medicine",
+        "clinic_affiliation": "Pulse Care Clinic & Diagnostic Center",
+        "experience_years": 14,
+        "license_doc": "KMC_Certificate_48921.pdf"
+      },
+      "created_at": "2026-08-04T03:23:03.724Z"
+    },
+    {
+      "id": "usr-doc-002",
+      "email": "dr.ananya.roy@gmail.com",
+      "password": "$2b$10$rSRYd0lJzBo8b3LB2HBASuOhcVrSDT2O.Mu2YS70GJvtCS5WrzkBW",
+      "full_name": "Dr. Ananya Roy, MS",
+      "phone": "+91 98765 00002",
+      "role": "DOCTOR",
+      "verificationStatus": "ACTIVE",
+      "doctor_profile": {
+        "mrn": "MMC-99120-2024",
+        "state_council": "Maharashtra Medical Council (MMC)",
+        "specialization": "Cardiology",
+        "clinic_affiliation": "City Heart Care Center",
+        "experience_years": 4,
+        "license_doc": "MMC_Reg_Roy_99120.pdf"
+      },
+      "created_at": "2026-08-29T03:23:03.831Z",
+      "rejectionReason": "",
+      "updated_at": "2026-09-03T04:08:38.384Z"
+    },
+    {
+      "id": "usr-pharma-001",
+      "email": "medplus.pharmacy@gmail.com",
+      "password": "$2b$10$gK4e5l7M8tN1UH7YV1q4x.GcBMwa9qRAqep9qTb5YOt.dIm/W23B.",
+      "full_name": "MedPlus 24/7 Super Pharmacy",
+      "phone": "+91 80 2553 1122",
+      "role": "PHARMACY",
+      "verificationStatus": "ACTIVE",
+      "pharmacy_profile": {
+        "store_name": "MedPlus 24/7 Super Pharmacy",
+        "dln": "KA-BLR-2024-88912",
+        "address": "80 Feet Road, 4th Block, Koramangala, Bengaluru",
+        "pincode": "560034",
+        "license_doc": "DrugLicense_KA_88912.pdf"
+      },
+      "created_at": "2026-08-14T03:23:03.947Z"
+    },
+    {
+      "id": "usr-pat-001",
+      "email": "anil.verma@gmail.com",
+      "password": "$2b$10$B.Wd0JsCtIYFOTKAildU/eHkwVdxBRl5318DcF60M6ZebLVmUYIVu",
+      "full_name": "Anil Kumar Verma",
+      "phone": "+91 98765 43210",
+      "role": "PATIENT",
+      "verificationStatus": "ACTIVE",
+      "patient_profile": {
+        "dob": "1982-04-14",
+        "gender": "Male",
+        "blood_group": "B+",
+        "emergency_contact": "+91 98765 43211 (Wife)",
+        "abha_id": "91-4829-1029-4412"
+      },
+      "created_at": "2026-08-19T03:23:04.068Z"
+    }
+  ],
+  "admins": [
+    {
+      "id": "adm-mtl2ya1k",
+      "name": "PulseCare Platform Administrator",
+      "email": "admin.pulse@gmail.com",
+      "password": "$2b$10$3rNdUe8Omn3nwxIUNNVAmOawxzPhn3UwOX6psU57siSx4N3Y7N9oq",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "permissions": [
+        "VERIFY_DOCTORS",
+        "VERIFY_PHARMACIES",
+        "MANAGE_USERS",
+        "VIEW_AUDIT_LOGS",
+        "SYSTEM_SETTINGS"
+      ],
+      "created_at": "2026-09-03T05:24:06.104Z",
+      "updated_at": "2026-09-03T05:24:06.104Z"
+    },
+    {
+      "id": "adm-001",
+      "name": "Rohit Guchhait (System Admin)",
+      "email": "guchhaitrohit11@gmail.com",
+      "password": "$2b$10$aPpoCfCqQLDQ71KR7Lfh0Ow62lozg8AlSKIcrDddSG8rQQKHBXHXi",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "permissions": [
+        "ALL"
+      ],
+      "created_at": "2026-09-03T03:50:28.485Z"
+    },
+    {
+      "id": "adm-002",
+      "name": "Nexora Platform Administrator",
+      "email": "admin.pulse@gmail.com",
+      "password": "$2b$10$To80NGouLZRF4qhhCjzPeu7dfJHRTuF0GBft4PA/2zp5Sf6elshvW",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "permissions": [
+        "ALL"
+      ],
+      "created_at": "2026-07-05T03:50:28.597Z"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "apt-mtl098ft",
+      "token": "TK-3915",
+      "patientId": "pat-mtl098ft",
+      "patientName": "Rahul Verma",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "date": "2026-09-04",
+      "timeSlot": "03:00 PM",
+      "symptoms": [
+        "Mild chest congestion",
+        "Sore throat"
+      ],
+      "vitals": {
+        "bp": "120/80 mmHg",
+        "pulse": "72 bpm",
+        "temp": "98.6 °F",
+        "spo2": "99%"
+      },
+      "status": "CONFIRMED",
+      "clinicalNotes": "Confirmed for OPD consultation.",
+      "created_at": "2026-09-03T04:08:38.393Z",
+      "updatedAt": "2026-09-03T04:08:38.397Z"
+    },
+    {
+      "id": "apt-mtl00xhb",
+      "token": "TK-3313",
+      "patientId": "pat-mtl00xhb",
+      "patientName": "Rahul Verma",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "date": "2026-09-04",
+      "timeSlot": "03:00 PM",
+      "symptoms": [
+        "Mild chest congestion",
+        "Sore throat"
+      ],
+      "vitals": {
+        "bp": "120/80 mmHg",
+        "pulse": "72 bpm",
+        "temp": "98.6 °F",
+        "spo2": "99%"
+      },
+      "status": "CONFIRMED",
+      "clinicalNotes": "Confirmed for OPD consultation.",
+      "created_at": "2026-09-03T04:02:10.943Z",
+      "updatedAt": "2026-09-03T04:02:10.949Z"
+    },
+    {
+      "id": "apt-mtkzm204",
+      "token": "TK-7796",
+      "patientId": "pat-mtkzm204",
+      "patientName": "Rahul Verma",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "date": "2026-09-04",
+      "timeSlot": "03:00 PM",
+      "symptoms": [
+        "Mild chest congestion",
+        "Sore throat"
+      ],
+      "vitals": {
+        "bp": "120/80 mmHg",
+        "pulse": "72 bpm",
+        "temp": "98.6 °F",
+        "spo2": "99%"
+      },
+      "status": "IN_CONSULT",
+      "clinicalNotes": "",
+      "created_at": "2026-09-03T03:50:36.964Z",
+      "updatedAt": "2026-09-03T03:55:53.309Z"
+    },
+    {
+      "id": "apt-101",
+      "token": "TK-101",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "timeSlot": "10:30 AM",
+      "date": "2026-09-03",
+      "symptoms": [
+        "Persistent dry cough x 4 days",
+        "Mild fever in evenings",
+        "Throat irritation"
+      ],
+      "vitals": {
+        "bp": "128/84 mmHg",
+        "pulse": "76 bpm",
+        "temp": "99.2 °F",
+        "spo2": "98%"
+      },
+      "status": "REQUESTED",
+      "clinicalNotes": "",
+      "created_at": "2026-09-03T02:48:04.186Z"
+    },
+    {
+      "id": "apt-102",
+      "token": "TK-102",
+      "patientId": "usr-pat-002",
+      "patientName": "Meera Patel",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "timeSlot": "11:00 AM",
+      "date": "2026-09-03",
+      "symptoms": [
+        "Severe migraine headache",
+        "Photophobia",
+        "Nausea since morning"
+      ],
+      "vitals": {
+        "bp": "118/76 mmHg",
+        "pulse": "82 bpm",
+        "temp": "98.6 °F",
+        "spo2": "99%"
+      },
+      "status": "CONFIRMED",
+      "clinicalNotes": "",
+      "created_at": "2026-09-03T01:58:04.186Z"
+    },
+    {
+      "id": "apt-103",
+      "token": "TK-103",
+      "patientId": "usr-pat-003",
+      "patientName": "Rohan Sharma",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "department": "Internal Medicine",
+      "timeSlot": "11:30 AM",
+      "date": "2026-09-03",
+      "symptoms": [
+        "Postprandial bloating",
+        "Epigastric discomfort",
+        "Acid reflux x 1 week"
+      ],
+      "vitals": {
+        "bp": "135/88 mmHg",
+        "pulse": "78 bpm",
+        "temp": "98.4 °F",
+        "spo2": "97%"
+      },
+      "status": "REQUESTED",
+      "clinicalNotes": "",
+      "created_at": "2026-09-03T03:08:04.186Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1156",
+      "orderNumber": "ORD-1156",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-003",
+      "pharmacyName": "Jan Aushadhi Generic Kendra",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "DISPENSED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T06:01:32.266Z",
+      "updatedAt": "2026-09-03T06:02:20.117Z"
+    },
+    {
+      "id": "ord-7276",
+      "orderNumber": "ORD-7276",
+      "patientId": "usr-patient-mtl467hl",
+      "patientName": "Prathamesh",
+      "pharmacyId": "usr-pharma-003",
+      "pharmacyName": "Jan Aushadhi Generic Kendra",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PACKED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T06:01:32.258Z",
+      "updatedAt": "2026-09-03T06:03:05.269Z"
+    },
+    {
+      "id": "ord-9972",
+      "orderNumber": "ORD-9972",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-002",
+      "pharmacyName": "Apollo Pharmacy Wellness Hub",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "READY",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-4153",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T05:32:07.669Z",
+      "updatedAt": "2026-09-03T06:01:49.570Z"
+    },
+    {
+      "id": "ord-9668",
+      "orderNumber": "ORD-9668",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-002",
+      "pharmacyName": "Apollo Pharmacy Wellness Hub",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "PLACED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-3552",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T05:32:07.659Z",
+      "updatedAt": "2026-09-03T05:32:07.659Z"
+    },
+    {
+      "id": "ord-9337",
+      "orderNumber": "ORD-9337",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "PLACED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-9093",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T05:14:35.745Z",
+      "updatedAt": "2026-09-03T05:14:35.745Z"
+    },
+    {
+      "id": "ord-7053",
+      "orderNumber": "ORD-7053",
+      "patientId": "usr-pharma-001",
+      "patientName": "MedPlus 24/7 Super Pharmacy",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "PLACED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-6921",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T05:14:35.723Z",
+      "updatedAt": "2026-09-03T05:14:35.723Z"
+    },
+    {
+      "id": "ord-8094",
+      "orderNumber": "ORD-8094",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-006",
+      "pharmacyName": "Frank Ross Pharmacy & Surgical",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "PLACED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-6321",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T04:57:16.650Z",
+      "updatedAt": "2026-09-03T04:57:16.650Z"
+    },
+    {
+      "id": "ord-6717",
+      "orderNumber": "ORD-6717",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-006",
+      "pharmacyName": "Frank Ross Pharmacy & Surgical",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "PLACED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-9873",
+      "deliveryAddress": null,
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T04:57:16.638Z",
+      "updatedAt": "2026-09-03T04:57:16.638Z"
+    },
+    {
+      "id": "ord-2498",
+      "orderNumber": "ORD-2498",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:56:53.685Z",
+      "updatedAt": "2026-09-03T04:56:53.685Z"
+    },
+    {
+      "id": "ord-8731",
+      "orderNumber": "ORD-8731",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:56:53.675Z",
+      "updatedAt": "2026-09-03T04:56:53.675Z"
+    },
+    {
+      "id": "ord-9836",
+      "orderNumber": "ORD-9836",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-002",
+      "pharmacyName": "Apollo Pharmacy Wellness Hub",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:55:25.627Z",
+      "updatedAt": "2026-09-03T04:55:25.627Z"
+    },
+    {
+      "id": "ord-4693",
+      "orderNumber": "ORD-4693",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-002",
+      "pharmacyName": "Apollo Pharmacy Wellness Hub",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:55:25.599Z",
+      "updatedAt": "2026-09-03T04:55:25.599Z"
+    },
+    {
+      "id": "ord-2726",
+      "orderNumber": "ORD-2726",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:54:12.067Z",
+      "updatedAt": "2026-09-03T04:54:12.067Z"
+    },
+    {
+      "id": "ord-7702",
+      "orderNumber": "ORD-7702",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg Generic",
+          "quantity": 10,
+          "price": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40",
+          "drugName": "Pantoprazole 40mg Generic",
+          "quantity": 7,
+          "price": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg Generic",
+          "quantity": 6,
+          "price": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 30,
+      "totalAmount": 136,
+      "status": "PLACED",
+      "fulfillmentType": "HOME_DELIVERY",
+      "pickupToken": null,
+      "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+      "estimatedMinutes": 35,
+      "created_at": "2026-09-03T04:54:11.999Z",
+      "updatedAt": "2026-09-03T04:54:11.999Z"
+    },
+    {
+      "id": "ord-4021",
+      "orderNumber": "ORD-4021",
+      "patientId": "usr-pat-001",
+      "patientName": "Anil Kumar Verma",
+      "pharmacyId": "usr-pharma-001",
+      "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+      "doctorId": "usr-doc-001",
+      "doctorName": "Dr. Vikram Sethi, MD",
+      "medicines": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg",
+          "quantity": 10,
+          "price": 60,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40 (Pantoprazole)",
+          "drugName": "Pantoprazole 40mg",
+          "quantity": 10,
+          "price": 32,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg",
+          "quantity": 10,
+          "price": 14,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "items": [
+        {
+          "name": "Jan Aushadhi Cefixime 200mg",
+          "drugName": "Cefixime 200mg",
+          "quantity": 10,
+          "price": 60,
+          "unitPrice": 60,
+          "isGeneric": true
+        },
+        {
+          "name": "Jan Aushadhi Pan 40 (Pantoprazole)",
+          "drugName": "Pantoprazole 40mg",
+          "quantity": 10,
+          "price": 32,
+          "unitPrice": 32,
+          "isGeneric": true
+        },
+        {
+          "name": "Paracetamol 650mg Generic",
+          "drugName": "Paracetamol 650mg",
+          "quantity": 10,
+          "price": 14,
+          "unitPrice": 14,
+          "isGeneric": true
+        }
+      ],
+      "subtotal": 106,
+      "deliveryFee": 0,
+      "totalAmount": 106,
+      "status": "DISPENSED",
+      "fulfillmentType": "COUNTER_PICKUP",
+      "pickupToken": "PK-2409",
+      "deliveryAddress": "80 Feet Rd, Koramangala, Bengaluru",
+      "estimatedMinutes": 10,
+      "created_at": "2026-09-03T04:51:35.698Z",
+      "updatedAt": "2026-09-03T04:55:00.166Z"
+    }
+  ],
+  "logs": [
+    {
+      "id": "log-mtl5wsxa-8wen",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T06:46:56.110Z"
+    },
+    {
+      "id": "log-mtl5smb0-0n1r",
+      "email": "patient.audit.1788417820729@pulsecare.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T06:43:40.908Z"
+    },
+    {
+      "id": "log-mtl5sm8v-v216",
+      "email": "patient.audit.1788417820729@pulsecare.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T06:43:40.831Z"
+    },
+    {
+      "id": "log-mtl5s3na-zazt",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T06:43:16.726Z"
+    },
+    {
+      "id": "log-mtl56gfb-5zzs",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T06:26:26.855Z"
+    },
+    {
+      "id": "log-mtl4y2ko-v33y",
+      "email": "patient.audit.1788416395475@pulsecare.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T06:19:55.656Z"
+    },
+    {
+      "id": "log-mtl4y2ie-1liu",
+      "email": "patient.audit.1788416395475@pulsecare.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T06:19:55.574Z"
+    },
+    {
+      "id": "log-mtl4ikhd-7t07",
+      "email": "prathameshvishwakarma132@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T06:07:52.369Z"
+    },
+    {
+      "id": "log-mtl4gafy-vu17",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T06:06:06.046Z"
+    },
+    {
+      "id": "log-mtl4gae2-yr6t",
+      "email": "test.patient.1788415565840@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T06:06:05.978Z"
+    },
+    {
+      "id": "log-mtl4gac4-6c1r",
+      "email": "test.patient.1788415565840@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T06:06:05.908Z"
+    },
+    {
+      "id": "log-mtl467jg-cwq5",
+      "email": "prathameshvishwakarma132@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T05:58:15.724Z"
+    },
+    {
+      "id": "log-mtl42rx8-l3yk",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:55:35.516Z"
+    },
+    {
+      "id": "log-mtl3ul1t-awap",
+      "email": "sharmarohit11@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T05:49:13.361Z"
+    },
+    {
+      "id": "log-mtl3iug6-fswx",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:40:05.670Z"
+    },
+    {
+      "id": "log-mtl3iue9-ml1u",
+      "email": "test.patient.1788414005445@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:40:05.601Z"
+    },
+    {
+      "id": "log-mtl3iuc9-nseo",
+      "email": "test.patient.1788414005445@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T05:40:05.529Z"
+    },
+    {
+      "id": "log-mtl38zc6-t3tv",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:32:25.446Z"
+    },
+    {
+      "id": "log-mtl385e9-j9h7",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:31:46.641Z"
+    },
+    {
+      "id": "log-mtl3737r-grck",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:30:57.159Z"
+    },
+    {
+      "id": "log-mtl370r7-fx1i",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:30:53.971Z"
+    },
+    {
+      "id": "log-mtl370p2-gehi",
+      "email": "test.patient.1788413453752@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:30:53.894Z"
+    },
+    {
+      "id": "log-mtl370n1-mhb2",
+      "email": "test.patient.1788413453752@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T05:30:53.821Z"
+    },
+    {
+      "id": "log-mtl36b5m-xesr",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:30:20.794Z"
+    },
+    {
+      "id": "log-mtl36b3k-g03t",
+      "email": "test.patient.1788413420567@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:30:20.720Z"
+    },
+    {
+      "id": "log-mtl36b1l-tqy1",
+      "email": "test.patient.1788413420567@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T05:30:20.649Z"
+    },
+    {
+      "id": "log-mtl2z3id-j2sz",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:24:44.293Z"
+    },
+    {
+      "id": "log-mtl2r7tk-ydmh",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:18:36.632Z"
+    },
+    {
+      "id": "log-mtl2qpc7-3xhx",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "FAILED_INVALID_PASSWORD",
+      "reason": "Admin login failed: INVALID_PASSWORD",
+      "timestamp": "2026-09-03T05:18:12.679Z"
+    },
+    {
+      "id": "log-mtl2qp6v-ojid",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "UNKNOWN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "FAILED_USER_NOT_FOUND",
+      "reason": "User account does not exist in registry.",
+      "timestamp": "2026-09-03T05:18:12.487Z"
+    },
+    {
+      "id": "log-mtl2q63b-2bvc",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:17:47.735Z"
+    },
+    {
+      "id": "log-mtl2mr8n-s15j",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:15:08.519Z"
+    },
+    {
+      "id": "log-mtl2lk6p-oxie",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:14:12.721Z"
+    },
+    {
+      "id": "log-mtl2hl02-uyrn",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:11:07.154Z"
+    },
+    {
+      "id": "log-mtl2cb6i-ygbd",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:07:01.146Z"
+    },
+    {
+      "id": "log-mtl2ayww-0lph",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:05:58.592Z"
+    },
+    {
+      "id": "log-mtl2ac19-1l1n",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T05:05:28.941Z"
+    },
+    {
+      "id": "log-mtl288v0-u4ur",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T05:03:51.516Z"
+    },
+    {
+      "id": "log-mtl2143e-r4m0",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:58:18.746Z"
+    },
+    {
+      "id": "log-mtl20y54-zp9y",
+      "email": "admin.pulse@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:58:11.032Z"
+    },
+    {
+      "id": "log-mtl20y17-0x5i",
+      "email": "admin.pulse@gmail.com",
+      "role": "UNKNOWN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "FAILED_USER_NOT_FOUND",
+      "reason": "User account does not exist in registry.",
+      "timestamp": "2026-09-03T04:58:10.891Z"
+    },
+    {
+      "id": "log-mtl1x6q6-bncm",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:55:15.534Z"
+    },
+    {
+      "id": "log-mtl1wjor-fe67",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:54:45.675Z"
+    },
+    {
+      "id": "log-mtl1vd79-yl7k",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:53:50.613Z"
+    },
+    {
+      "id": "log-mtl1st9m-7gc1",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:51:51.466Z"
+    },
+    {
+      "id": "log-mtl1fhco-wptj",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:41:29.496Z"
+    },
+    {
+      "id": "log-mtl1fakk-qf2i",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:41:20.708Z"
+    },
+    {
+      "id": "log-mtl1ezmw-z4ng",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:41:06.536Z"
+    },
+    {
+      "id": "log-mtl1dfyn-fkns",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:39:54.383Z"
+    },
+    {
+      "id": "log-mtl18snq-3zmn",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:36:17.558Z"
+    },
+    {
+      "id": "log-mtl180q6-mc5v",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:35:41.358Z"
+    },
+    {
+      "id": "log-mtl160r3-bmxr",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:34:08.079Z"
+    },
+    {
+      "id": "log-mtl098fc-jut0",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:08:38.376Z"
+    },
+    {
+      "id": "log-mtl098bz-tc4z",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:08:38.255Z"
+    },
+    {
+      "id": "log-mtl0988s-pkqx",
+      "email": "rahul.patient.1788408517768@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "FAILED_INVALID_PASSWORD",
+      "reason": "Invalid password provided.",
+      "timestamp": "2026-09-03T04:08:38.140Z"
+    },
+    {
+      "id": "log-mtl0985i-bph1",
+      "email": "rahul.patient.1788408517768@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:08:38.022Z"
+    },
+    {
+      "id": "log-mtl0981x-ep0l",
+      "email": "rahul.patient.1788408517768@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T04:08:37.893Z"
+    },
+    {
+      "id": "log-mtl00xgk-5jfi",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T04:02:10.916Z"
+    },
+    {
+      "id": "log-mtl00xd0-350l",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:02:10.788Z"
+    },
+    {
+      "id": "log-mtl00x9q-b08w",
+      "email": "rahul.patient.1788408130293@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "FAILED_INVALID_PASSWORD",
+      "reason": "Invalid password provided.",
+      "timestamp": "2026-09-03T04:02:10.670Z"
+    },
+    {
+      "id": "log-mtl00x60-87l3",
+      "email": "rahul.patient.1788408130293@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T04:02:10.536Z"
+    },
+    {
+      "id": "log-mtl00x2n-cqxp",
+      "email": "rahul.patient.1788408130293@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T04:02:10.415Z"
+    },
+    {
+      "id": "log-mtkzr8m1-9g6s",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:54:38.809Z"
+    },
+    {
+      "id": "log-mtkzm1yn-1rmf",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Admin Console",
+      "status": "AUTHORIZED",
+      "reason": "Administrator master console login.",
+      "timestamp": "2026-09-03T03:50:36.911Z"
+    },
+    {
+      "id": "log-mtkzm1v4-i3vc",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:50:36.784Z"
+    },
+    {
+      "id": "log-mtkzm1rz-amco",
+      "email": "rahul.patient.1788407436321@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "FAILED_INVALID_PASSWORD",
+      "reason": "Invalid password provided.",
+      "timestamp": "2026-09-03T03:50:36.671Z"
+    },
+    {
+      "id": "log-mtkzm1ot-fqoy",
+      "email": "rahul.patient.1788407436321@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:50:36.557Z"
+    },
+    {
+      "id": "log-mtkzm1ld-8b5e",
+      "email": "rahul.patient.1788407436321@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T03:50:36.433Z"
+    },
+    {
+      "id": "log-mtkzied6-n0ij",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:47:46.362Z"
+    },
+    {
+      "id": "log-mtkyoy9j-zpz4",
+      "email": "guchhaitrohit11@gmail.com",
+      "role": "ADMIN",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T03:24:52.471Z"
+    },
+    {
+      "id": "log-mtkymwyi-4l6j",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:23:17.466Z"
+    },
+    {
+      "id": "log-mtkymwv3-anrt",
+      "email": "rahul.patient.1788405796960@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "FAILED_INVALID_PASSWORD",
+      "reason": "Invalid password provided.",
+      "timestamp": "2026-09-03T03:23:17.343Z"
+    },
+    {
+      "id": "log-mtkymwrp-1y3i",
+      "email": "rahul.patient.1788405796960@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "Successful authentication.",
+      "timestamp": "2026-09-03T03:23:17.221Z"
+    },
+    {
+      "id": "log-mtkymwo1-i6r1",
+      "email": "rahul.patient.1788405796960@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "::1",
+      "userAgent": "PulseCare Web Client",
+      "status": "AUTHORIZED",
+      "reason": "New account registration.",
+      "timestamp": "2026-09-03T03:23:17.089Z"
+    },
+    {
+      "id": "log-1",
+      "email": "dr.vikram.sethi@gmail.com",
+      "role": "DOCTOR",
+      "ipAddress": "192.168.1.45 (OPD Desk)",
+      "userAgent": "PulseCare Doctor Desktop (Chrome 130)",
+      "status": "AUTHORIZED",
+      "reason": "Doctor portal session login.",
+      "timestamp": "2026-09-03T03:13:04.186Z"
+    },
+    {
+      "id": "log-2",
+      "email": "anil.verma@gmail.com",
+      "role": "PATIENT",
+      "ipAddress": "49.37.12.88 (Mobile 5G)",
+      "userAgent": "PulseCare Patient App (iOS 17)",
+      "status": "AUTHORIZED",
+      "reason": "Patient portal authentication.",
+      "timestamp": "2026-09-03T02:48:04.186Z"
+    },
+    {
+      "id": "log-3",
+      "email": "medplus.pharmacy@gmail.com",
+      "role": "PHARMACY",
+      "ipAddress": "122.172.84.19 (Store Static IP)",
+      "userAgent": "PulseCare Pharmacy Terminal",
+      "status": "AUTHORIZED",
+      "reason": "Pharmacy POS login.",
+      "timestamp": "2026-09-03T02:23:04.186Z"
+    }
+  ]
+}

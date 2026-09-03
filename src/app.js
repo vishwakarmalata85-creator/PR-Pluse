@@ -8,6 +8,7 @@ import { NavbarComponent } from "./components/Navbar.js";
 import { FooterComponent } from "./components/Footer.js";
 import { ModalManagerComponent } from "./components/FhirModal.js";
 import { PulseCareFloatingChatComponent } from "./components/PulseCareFloatingChat.js";
+import { screenService } from "./services/screenService.js";
 import { initRouter, router } from "./router.js";
 
 class PulseCareApp {

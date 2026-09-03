@@ -1,108 +1,437 @@
 /* ==========================================================================
-   NEXORA PULSE - RESPONSIVE BREAKPOINTS & MOBILE OPTIMIZATIONS
+   NEXORA PULSECARE - COMPREHENSIVE FLUID RESPONSIVE DESIGN FRAMEWORK
+   Seamlessly adapts across:
+   - Mobile Phones (320px - 639px)
+   - Large Mobile / Small Tablets (640px - 767px)
+   - Tablets Portrait & Landscape (768px - 1023px)
+   - Laptops & Desktops (1024px - 1439px)
+   - Large Monitors & Ultrawide (1440px - 2560px+)
    ========================================================================== */
 
-/* Desktop & Tablet Landscape (1024px - 1279px) */
-@media (max-width: 1279px) {
+/* --------------------------------------------------------------------------
+   1. GLOBAL RESPONSIVE RESET & FLUID CONTAINERS
+   -------------------------------------------------------------------------- */
+:root {
+  --header-height: 68px;
+  --mobile-nav-height: 62px;
+  --container-pad: clamp(12px, 3vw, 24px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Fluid Containers */
+.container,
+.container-narrow {
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--container-pad) !important;
+  padding-right: var(--container-pad) !important;
+  box-sizing: border-box !important;
+}
+
+/* Prevent text and badge clipping */
+h1, h2, h3, h4, h5, p, span, a, div {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOUCH-FRIENDLY PILL TABS & HORIZONTAL SCROLLBAR SUPPRESSION
+   -------------------------------------------------------------------------- */
+.pill-tab,
+.pill-tab-toggle,
+.btn-filter-specialty,
+.btn-slot,
+.btn-demo-persona {
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth horizontal scroll tracks without ugly scrollbars */
+.horizontal-scroll-bar,
+.pill-tab-bar,
+div[style*="overflow-x: auto"] {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.horizontal-scroll-bar::-webkit-scrollbar,
+.pill-tab-bar::-webkit-scrollbar,
+div[style*="overflow-x: auto"]::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESPONSIVE MOBILE FLOATING BOTTOM DOCK (< 768px)
+   -------------------------------------------------------------------------- */
+.mobile-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px)) 12px;
+}
+
+.mobile-nav-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 54px;
+  cursor: pointer;
+}
+
+.mobile-nav-item .m-icon {
+  font-size: 19px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.mobile-nav-item .m-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.mobile-nav-item.active {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.mobile-nav-item.active .m-icon {
+  transform: scale(1.15);
+}
+
+/* --------------------------------------------------------------------------
+   4. BREAKPOINT: LARGE MONITORS & ULTRAWIDE (>= 1440px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px !important;
+  }
+
   .doctor-workspace-grid {
-    grid-template-columns: 280px 1fr 300px;
-    gap: var(--space-4);
-  }
-
-  .ocr-split-workstation {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
-  }
-
-  .geo-locator-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-4);
+    grid-template-columns: 320px 1fr 340px !important;
+    gap: 24px !important;
   }
 }
 
-/* Tablet Portrait (768px - 1023px) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1540px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. BREAKPOINT: LAPTOPS & DESKTOPS (1024px - 1439px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1439px) and (min-width: 1024px) {
+  .doctor-workspace-grid {
+    grid-template-columns: 280px 1fr 300px !important;
+    gap: 16px !important;
+  }
+
+  .admin-kpi-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .nav-links {
+    gap: var(--space-md) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. BREAKPOINT: TABLET PORTRAIT & LANDSCAPE (768px - 1023px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1023px) {
-  main.main-content {
-    padding: var(--space-4);
+  :root {
+    --header-height: 62px;
   }
 
-  .app-header {
-    flex-wrap: wrap;
-    padding: var(--space-3) var(--space-4);
+  /* Navigation */
+  .top-nav {
+    height: auto !important;
+    padding: 10px 0 !important;
   }
 
-  .role-nav {
-    order: 3;
-    width: 100%;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 4px 6px;
+  .nav-links-desktop {
+    display: none !important;
   }
 
+  .nav-user-chip {
+    display: none !important;
+  }
+
+  /* Identity Banners */
+  .patient-identity-banner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  /* Doctor Directory 2-col on Tablet */
+  div[style*="grid-template-columns: repeat(2, 1fr)"],
+  .customer-stories-grid,
+  .feature-grid-4up {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Doctor OPD Workstation: Stack 3rd column below */
   .doctor-workspace-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 280px 1fr !important;
+  }
+  .doctor-workspace-grid > div:last-child {
+    grid-column: span 2 !important;
   }
 
-  .ocr-split-workstation {
-    grid-template-columns: 1fr;
+  /* Admin KPI Grid 4-col to 2x2 */
+  .admin-kpi-grid,
+  div[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
   }
 
-  .geo-locator-grid {
-    grid-template-columns: 1fr;
+  /* Split Grids Stack on Tablet */
+  .geo-locator-grid,
+  .ocr-split-workstation,
+  div[style*="grid-template-columns: 1.15fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1.15fr"],
+  div[style*="grid-template-columns: 1.3fr 1.7fr"],
+  div[style*="grid-template-columns: 1.15fr 1.85fr"],
+  div[style*="grid-template-columns: 1fr 1.2fr"],
+  div[style*="grid-template-columns: 1.2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
   }
 
-  .ai-assistant-container {
-    grid-template-columns: 1fr;
+  /* Footer 5-col to 3-col */
+  .footer-grid,
+  div[style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
   }
 }
 
-/* Mobile Devices (< 767px) */
+/* --------------------------------------------------------------------------
+   7. BREAKPOINT: SMARTPHONES & MOBILE SCREENS (< 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 767px) {
-  main.main-content {
-    padding: var(--space-3);
+  :root {
+    --header-height: 58px;
+    --container-pad: 12px;
   }
 
-  .brand-subtitle {
-    display: none;
+  /* Mount Mobile Bottom Navigation Bar */
+  .mobile-bottom-bar {
+    display: block !important;
   }
 
-  .header-telemetry .telemetry-chip {
-    display: none;
+  /* Add bottom padding to body to prevent bottom bar overlap */
+  body {
+    padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 16px) + 12px) !important;
   }
 
-  .patient-identity-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
+  #main-content {
+    padding-top: 10px !important;
   }
 
-  .role-selector-grid {
-    grid-template-columns: 1fr;
+  /* Navigation simplification */
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex !important;
   }
 
+  .top-nav {
+    padding: 8px 0 !important;
+  }
+
+  .logo-text {
+    font-size: 20px !important;
+  }
+
+  /* All Multi-Column Grids collapse to 100% Single Column on Mobile */
+  .doctor-workspace-grid,
+  .ocr-split-workstation,
+  .geo-locator-grid,
+  .admin-kpi-grid,
+  .customer-stories-grid,
+  .feature-grid-4up,
+  div[style*="grid-template-columns: repeat(2, 1fr)"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"],
+  div[style*="grid-template-columns: repeat(4, 1fr)"],
+  div[style*="grid-template-columns: repeat(5, 1fr)"],
+  div[style*="grid-template-columns: 1.15fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1.15fr"],
+  div[style*="grid-template-columns: 1.3fr 1.7fr"],
+  div[style*="grid-template-columns: 1.15fr 1.85fr"],
+  div[style*="grid-template-columns: 1fr 1.2fr"],
+  div[style*="grid-template-columns: 1.2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Auth Role Grid: 2x2 on Mobile */
+  .auth-role-grid,
+  div[style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .auth-role-card {
+    padding: 8px 4px !important;
+  }
+
+  /* Card padding reduction */
+  .card-base {
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Interactive Maps */
+  #pharmacy-map,
+  .leaflet-container {
+    height: 250px !important;
+    border-radius: 14px !important;
+  }
+
+  /* OCR Canvas container */
   .ocr-canvas-container {
-    height: 380px;
+    height: 280px !important;
   }
 
-  .geo-radar-panel {
-    min-height: 340px;
-  }
-
-  .radar-circle.c3 {
-    width: 300px;
-    height: 300px;
-  }
-
-  .radar-sweep-beam {
-    width: 300px;
-    height: 300px;
-  }
-
+  /* Modals: Convert to Bottom Sheet Drawer */
+  .modal-dialog,
+  .modal-card,
+  .modal-box,
   .auth-card {
-    max-height: 95vh;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 24px 24px 0 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2) !important;
+    animation: slideUpDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  .auth-card-body {
-    padding: var(--space-4);
+  @keyframes slideUpDrawer {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  /* Floating AI Assistant Widget */
+  .pulsecare-floating-chat-bubble,
+  #pulsecare-chat-trigger {
+    bottom: calc(var(--mobile-nav-height) + 14px) !important;
+    right: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .pulsecare-chat-window,
+  div[style*="width: 410px; height: 570px"] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+    z-index: 1100 !important;
+  }
+
+  /* Full width forms */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100% !important;
+    font-size: 14px !important;
+  }
+
+  /* Footer on Mobile */
+  .footer-grid,
+  div[style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. BREAKPOINT: SMALL COMPACT PHONES (< 380px - iPhone SE, Galaxy Fold)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  :root {
+    --container-pad: 8px;
+  }
+
+  .logo-text {
+    font-size: 18px !important;
+  }
+
+  .card-base {
+    padding: 12px !important;
+  }
+
+  .pill-tab-toggle,
+  .pill-tab {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
   }
 }

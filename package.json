@@ -1,7 +1,18 @@
 {
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "create-admin": "node scripts/createAdmin.js"
+  },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "isomorphic-git": "^1.41.9",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.6.0",
+    "mongoose": "^9.9.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3"

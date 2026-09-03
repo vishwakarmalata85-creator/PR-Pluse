@@ -34,9 +34,33 @@ class AuthService {
   }
 
   /**
-   * POST /api/auth/login
+   * POST /api/admin/login
    */
-  async login(email, password) {
+  async adminLogin(email, password) {
+    const res = await fetch(`${this.apiBase}/api/admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+    if (!res.ok || !data.success) {
+      throw new Error(data.error || "Admin login failed. Please verify credentials.");
+    }
+
+    const session = { token: data.token, user: data.admin };
+    this.saveSession(session);
+    return session;
+  }
+
+  /**
+   * POST /api/auth/login with smart admin fallback
+   */
+  async login(email, password, role = "") {
+    if (role === "ADMIN") {
+      return await this.adminLogin(email, password);
+    }
+
     const res = await fetch(`${this.apiBase}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -45,7 +69,12 @@ class AuthService {
 
     const data = await res.json();
     if (!res.ok || !data.success) {
-      throw new Error(data.error || "Login failed. Please check your credentials.");
+      // If user is not in regular users collection, check if it is an admin
+      try {
+        return await this.adminLogin(email, password);
+      } catch {
+        throw new Error(data.error || "Login failed. Please check your credentials.");
+      }
     }
 
     const session = { token: data.token, user: data.user };
@@ -54,7 +83,7 @@ class AuthService {
   }
 
   /**
-   * POST /api/auth/register
+   * POST /api/auth/register (Patients, Doctors, Pharmacies)
    */
   async register(formData) {
     const res = await fetch(`${this.apiBase}/api/auth/register`, {
@@ -85,7 +114,9 @@ class AuthService {
    */
   async getLoginHistory() {
     try {
-      const res = await fetch(`${this.apiBase}/api/auth/login-history`);
+      const token = this.session?.token;
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      const res = await fetch(`${this.apiBase}/api/admin/login-history`, { headers });
       const data = await res.json();
       return data.logs || [];
     } catch {
@@ -98,7 +129,9 @@ class AuthService {
    */
   async getAdminUsers() {
     try {
-      const res = await fetch(`${this.apiBase}/api/admin/users`);
+      const token = this.session?.token;
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+      const res = await fetch(`${this.apiBase}/api/admin/users`, { headers });
       const data = await res.json();
       return data.users || [];
     } catch {
@@ -110,9 +143,15 @@ class AuthService {
    * POST /api/admin/verify-user
    */
   async adminVerifyUser(userId, isApproved, rejectionReason = "") {
+    const token = this.session?.token;
+    const headers = {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    };
+
     const res = await fetch(`${this.apiBase}/api/admin/verify-user`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ userId, isApproved, rejectionReason })
     });
 
@@ -124,11 +163,40 @@ class AuthService {
   }
 
   /**
+   * GET /api/users?role=DOCTOR
+   */
+  async getDoctors(specialty = "") {
+    try {
+      const url = specialty && specialty !== "ALL"
+        ? `${this.apiBase}/api/users?role=DOCTOR&specialty=${encodeURIComponent(specialty)}`
+        : `${this.apiBase}/api/users?role=DOCTOR`;
+      const res = await fetch(url);
+      const data = await res.json();
+      return data.users || [];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
    * GET /api/appointments
    */
   async getAppointments() {
     try {
       const res = await fetch(`${this.apiBase}/api/appointments`);
+      const data = await res.json();
+      return data.appointments || [];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
+   * GET /api/appointments/my?patientId=...
+   */
+  async getPatientAppointments(patientId = "usr-pat-001") {
+    try {
+      const res = await fetch(`${this.apiBase}/api/appointments/my?patientId=${encodeURIComponent(patientId)}`);
       const data = await res.json();
       return data.appointments || [];
     } catch {

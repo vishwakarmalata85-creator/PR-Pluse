@@ -1,45 +1,57 @@
 /**
- * NEXORA PULSECARE - PERSISTENT FLOATING AI COMPANION (Miro Design Patterns)
- * Connected to Google Gemini 2.5/1.5 Flash API with live key configuration & audio TTS
+ * NEXORA PULSECARE - LIVE AI ASSISTANT FLOATING CHAT WIDGET
+ * Powered by Google Gemini through secure backend proxy.
+ * API keys are kept 100% hidden on the server.
  */
 
 import { store } from "../state/store.js";
-import { AiAssistantService, SUPPORTED_LANGUAGES } from "../services/aiAssistantService.js";
-import { getGeminiApiKey, setGeminiApiKey, hasGeminiApiKey } from "../geminiConfig.js";
+import { AiAssistantService } from "../services/aiAssistantService.js";
 
-export class PulseCareFloatingChatComponent {
-  constructor(container) {
-    this.container = container;
+const SUPPORTED_LANGUAGES = [
+  { code: "en", name: "English", flag: "GB" },
+  { code: "hi", name: "हिंदी (Hindi)", flag: "IN" },
+  { code: "bn", name: "বাংলা (Bengali)", flag: "IN" },
+  { code: "mr", name: "मराठी (Marathi)", flag: "IN" },
+  { code: "ta", name: "தமிழ் (Tamil)", flag: "IN" },
+  { code: "te", name: "తెలుగు (Telugu)", flag: "IN" },
+  { code: "es", name: "Español", flag: "ES" }
+];
+
+export class PulseCareFloatingChat {
+  constructor(containerId = "pulsecare-chat-container") {
+    this.container = document.getElementById(containerId);
+    if (!this.container) {
+      this.container = document.createElement("div");
+      this.container.id = containerId;
+      document.body.appendChild(this.container);
+    }
+
     this.isOpen = false;
-    this.showKeyModal = false;
     this.isThinking = false;
     this.currentLang = "en";
     this.chatMessages = [
       {
         sender: "ai",
-        text: "Hello Anil! I am your **PulseCare AI Health Companion** powered by Google Gemini. You can ask me what Latin abbreviations like `1-0-1` mean, when to take medicines, or check dietary precautions.",
-        model: hasGeminiApiKey() ? "Google Gemini Live" : "Clinical Engine"
+        text: `Hello! I am your **PulseCare AI Health Companion** powered by Google Gemini. You can ask me what Latin abbreviations like \`1-0-1\` mean, when to take medicines, or check dietary precautions.`,
+        model: "Google Gemini Live"
       }
     ];
 
-    this.unsubscribe = store.subscribe(() => {
-      if (this.isOpen) this.render();
-    });
+    this.init();
+  }
 
-    window.addEventListener("geminiApiKeyChanged", () => {
-      if (this.isOpen) this.render();
-    });
+  init() {
+    this.render();
   }
 
   render() {
-    const hasKey = hasGeminiApiKey();
-
     this.container.innerHTML = `
-      <div class="pulsecare-floating-root" style="position: fixed; bottom: var(--space-xl); right: var(--space-xl); z-index: 220;">
+      <!-- Fixed Floating Container -->
+      <div class="pulsecare-chat-widget-root" style="position: fixed; bottom: clamp(16px, 3vw, var(--space-xl)); right: clamp(12px, 3vw, var(--space-xl)); z-index: 1050; display: flex; flex-direction: column; align-items: flex-end; font-family: var(--font-family); max-width: calc(100vw - 24px);">
         
-        <!-- Expanded Chat Drawer / Card (Miro Design: White surface with 24px rounded corners & shadow) -->
+        <!-- Expanded Chat Drawer / Card -->
         ${this.isOpen ? `
-          <div class="card-base" style="width: 410px; height: 570px; display: flex; flex-direction: column; padding: 0; box-shadow: var(--shadow-elevated); border: 1px solid var(--color-hairline); border-radius: var(--radius-xxl); margin-bottom: var(--space-md); background: #ffffff; overflow: hidden; animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
+          <div class="card-base pulsecare-chat-window" style="width: min(410px, calc(100vw - 24px)); height: min(570px, calc(100dvh - 130px)); display: flex; flex-direction: column; padding: 0; box-shadow: var(--shadow-elevated); border: 1px solid var(--color-hairline); border-radius: var(--radius-xxl); margin-bottom: var(--space-md); background: #ffffff; overflow: hidden; animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);">
             
             <!-- Chat Header (Pastel Yellow Tint) -->
             <div style="padding: 12px 18px; background: var(--color-surface-yellow); border-bottom: 1px solid #fde68a; display: flex; align-items: center; justify-content: space-between;">
@@ -50,8 +62,8 @@ export class PulseCareFloatingChatComponent {
                 <div>
                   <div style="display: flex; align-items: center; gap: 6px;">
                     <div style="font-weight: 800; font-size: 15px; color: var(--color-primary);">PulseCare AI</div>
-                    <span class="badge-promo" style="font-size: 9px; padding: 1px 6px; background: ${hasKey ? '#10b981' : '#f59e0b'}; color: #fff;">
-                      ${hasKey ? '✨ GEMINI LIVE' : '⚡ CLINICAL MODE'}
+                    <span class="badge-promo" style="font-size: 9px; padding: 1px 6px; background: #10b981; color: #fff;">
+                      ✨ AI LIVE
                     </span>
                   </div>
                   <div style="font-size: 11px; color: var(--color-yellow-dark);">Context: Active Rx & ABDM Linked</div>
@@ -59,38 +71,14 @@ export class PulseCareFloatingChatComponent {
               </div>
 
               <div style="display: flex; align-items: center; gap: 6px;">
-                <!-- Key Config Button -->
-                <button class="pill-tab" id="btn-toggle-key-settings" style="padding: 3px 8px; font-size: 11px; background: #fff; border-color: ${hasKey ? '#10b981' : '#cbd5e1'};" title="Configure Google Gemini API Key">
-                  🔑 ${hasKey ? 'Key Active' : 'Set Key'}
-                </button>
-
                 <!-- Language Selector -->
                 <select id="pulsecare-lang-select" style="padding: 2px 6px; font-size: 11px; height: 26px; border-radius: var(--radius-full); border: 1px solid #cbd5e1; background: #fff; cursor: pointer;">
                   ${SUPPORTED_LANGUAGES.map(l => `<option value="${l.code}" ${this.currentLang === l.code ? 'selected' : ''}>${l.flag} ${l.code.toUpperCase()}</option>`).join("")}
                 </select>
 
-                <button class="pill-tab" id="btn-close-pulsecare" style="padding: 2px 8px; font-size: 12px; background: #fff;">✕</button>
+                <button class="pill-tab" id="btn-close-pulsecare" style="padding: 2px 8px; font-size: 12px; background: #fff;" title="Close Chat">✕</button>
               </div>
             </div>
-
-            <!-- Gemini Key Settings Dropdown / Panel -->
-            ${this.showKeyModal ? `
-              <div style="padding: 12px 16px; background: #eff6ff; border-bottom: 1px solid #bfdbfe; font-size: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                  <span style="font-weight: 700; color: #1e3a8a;">🔑 Google Gemini API Key Configuration</span>
-                  <button id="btn-close-key-settings" style="background: none; border: none; font-size: 13px; cursor: pointer; color: #64748b;">✕</button>
-                </div>
-                <div style="display: flex; gap: 6px; margin-top: 6px;">
-                  <input type="password" id="input-gemini-key" placeholder="AIzaSy..." value="${getGeminiApiKey()}" style="flex: 1; padding: 6px 10px; font-size: 11px; border-radius: var(--radius-md); border: 1px solid #93c5fd; background: #fff;" />
-                  <button class="button-primary" id="btn-save-gemini-key" style="padding: 6px 12px; font-size: 11px;">
-                    Save
-                  </button>
-                </div>
-                <div style="font-size: 10px; color: #3b82f6; margin-top: 4px;">
-                  Key is saved securely in your browser's local storage or in <code>src/geminiConfig.js</code>.
-                </div>
-              </div>
-            ` : ''}
 
             <!-- Quick Question Chips (Miro Pill Chips) -->
             <div style="padding: 8px var(--space-md); background: var(--color-surface); border-bottom: 1px solid var(--color-hairline); display: flex; gap: 6px; overflow-x: auto; white-space: nowrap;">
@@ -127,26 +115,42 @@ export class PulseCareFloatingChatComponent {
               ${this.isThinking ? `
                 <div style="align-self: flex-start; background: #ffffff; border: 1px solid #cbd5e1; padding: 10px 14px; border-radius: 16px; border-bottom-left-radius: 4px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--color-slate);">
                   <div style="animation: spin 1s infinite linear; font-size: 14px;">⚡</div>
-                  <span>PulseCare AI is thinking with Gemini...</span>
+                  <span>PulseCare AI is thinking...</span>
                 </div>
               ` : ''}
             </div>
 
-            <!-- Input Bar -->
-            <div style="padding: 10px var(--space-md); background: #ffffff; border-top: 1px solid var(--color-hairline); display: flex; gap: var(--space-xs); align-items: center;">
-              <input type="text" id="pulsecare-input" placeholder="Ask about medicines, timings, doses..." ${this.isThinking ? 'disabled' : ''} style="flex: 1; font-size: 13px; padding: 10px 14px; border-radius: var(--radius-full); border: 1px solid var(--color-hairline-strong);" />
-              <button class="button-primary" id="btn-pulsecare-send" ${this.isThinking ? 'disabled' : ''} style="padding: 10px 18px; font-size: 13px;">
-                <span>➔</span>
+            <!-- Input Bar & Prompt Area -->
+            <div style="padding: 12px 16px; background: #ffffff; border-top: 1px solid var(--color-hairline); display: flex; gap: 8px; align-items: center;">
+              <input 
+                type="text" 
+                id="pulsecare-input" 
+                placeholder="Ask about medicines, timings, doses..." 
+                style="flex: 1; padding: 10px 14px; font-size: 13px; border-radius: var(--radius-full); border: 1px solid var(--color-hairline-strong); background: var(--color-surface); outline: none; transition: border-color 0.2s;"
+                ${this.isThinking ? 'disabled' : ''}
+              />
+              <button 
+                id="btn-pulsecare-send" 
+                class="button-primary" 
+                style="width: 38px; height: 38px; padding: 0; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 16px;"
+                ${this.isThinking ? 'disabled' : ''}
+                title="Send Message"
+              >
+                ➔
               </button>
             </div>
 
           </div>
         ` : ''}
 
-        <!-- Floating Yellow/Black Trigger Button -->
-        <button class="pulsecare-floating-btn" id="btn-toggle-pulsecare" style="width: 58px; height: 58px; border-radius: 50%; background: var(--color-brand-yellow); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--shadow-elevated); cursor: pointer; border: 2px solid #ffffff; transition: transform var(--transition-fast);" title="Open PulseCare AI Companion">
-          ${this.isOpen ? '✕' : '🤖'}
-          ${!this.isOpen ? `<div style="position: absolute; top: 4px; right: 4px; width: 12px; height: 12px; border-radius: 50%; background: ${hasKey ? '#10b981' : '#f59e0b'}; border: 2px solid #fff;"></div>` : ''}
+        <!-- Persistent Floating Launcher Bubble -->
+        <button 
+          id="btn-pulsecare-toggle" 
+          class="button-primary" 
+          style="width: 58px; height: 58px; border-radius: var(--radius-full); box-shadow: var(--shadow-elevated); padding: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; border: 2px solid var(--color-brand-yellow); cursor: pointer; transition: transform 0.2s ease;"
+          title="Open PulseCare AI Clinical Assistant"
+        >
+          ${this.isOpen ? '✕' : '⚡'}
         </button>
 
       </div>
@@ -159,12 +163,14 @@ export class PulseCareFloatingChatComponent {
     if (!text) return "";
     return text
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/`([^`]+)`/g, "<code style='background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 4px; font-family: var(--font-family-mono); font-size: 12px;'>$1</code>")
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      .replace(/`([^`]+)`/g, "<code style='background: #f1f5f9; padding: 1px 4px; border-radius: 4px; font-family: monospace;'>$1</code>")
+      .replace(/\n\n/g, "<br/><br/>")
       .replace(/\n/g, "<br/>");
   }
 
   bindEvents() {
-    const toggleBtn = this.container.querySelector("#btn-toggle-pulsecare");
+    const toggleBtn = this.container.querySelector("#btn-pulsecare-toggle");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
         this.isOpen = !this.isOpen;
@@ -176,38 +182,6 @@ export class PulseCareFloatingChatComponent {
     if (closeBtn) {
       closeBtn.addEventListener("click", () => {
         this.isOpen = false;
-        this.render();
-      });
-    }
-
-    const keyToggleBtn = this.container.querySelector("#btn-toggle-key-settings");
-    if (keyToggleBtn) {
-      keyToggleBtn.addEventListener("click", () => {
-        this.showKeyModal = !this.showKeyModal;
-        this.render();
-      });
-    }
-
-    const closeKeyBtn = this.container.querySelector("#btn-close-key-settings");
-    if (closeKeyBtn) {
-      closeKeyBtn.addEventListener("click", () => {
-        this.showKeyModal = false;
-        this.render();
-      });
-    }
-
-    const saveKeyBtn = this.container.querySelector("#btn-save-gemini-key");
-    const inputKey = this.container.querySelector("#input-gemini-key");
-    if (saveKeyBtn && inputKey) {
-      saveKeyBtn.addEventListener("click", () => {
-        const val = inputKey.value.trim();
-        setGeminiApiKey(val);
-        this.showKeyModal = false;
-        this.chatMessages.push({
-          sender: "ai",
-          text: val.length > 5 ? "✅ **Google Gemini API Key successfully saved!** PulseCare AI is now connected to live Gemini models." : "ℹ️ Gemini API key cleared. Operating in offline clinical engine mode.",
-          model: val.length > 5 ? "Google Gemini Flash (Live)" : "Clinical Engine"
-        });
         this.render();
       });
     }
@@ -292,3 +266,6 @@ export class PulseCareFloatingChatComponent {
     if (this.unsubscribe) this.unsubscribe();
   }
 }
+
+export const PulseCareFloatingChatComponent = PulseCareFloatingChat;
+export default PulseCareFloatingChat;

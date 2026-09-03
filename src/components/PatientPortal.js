@@ -8,6 +8,7 @@ import { GeoService } from "../services/geoService.js";
 import { realtimeMapService } from "../services/realtimeMapService.js";
 import { GeminiVisionService } from "../services/geminiVisionService.js";
 import { orderService } from "../services/orderService.js";
+import { authService } from "../services/authService.js";
 import { DOCTORS_DIRECTORY } from "../data/doctorsData.js";
 import { REFERENCE_LOCATION } from "../data/pharmacies.js";
 
@@ -23,6 +24,12 @@ export class PatientPortalComponent {
       selectedSampleId: "ocr-sample-1"
     };
     this.bookingModalDoctor = null;
+    this.bookedAppointment = null;
+    this.liveOrders = [];
+    this.liveDoctors = [];
+    this.fetchLiveOrders();
+    this.fetchLiveDoctors();
+    this.fetchLiveAppointments();
     this.unsubscribe = store.subscribe(() => this.render());
 
     // Listen for tab switch events from Navbar
@@ -35,15 +42,34 @@ export class PatientPortalComponent {
         }
       }
     });
+
+    // Listen for global sync live data event
+    window.addEventListener("syncLivePlatformData", async () => {
+      await Promise.all([
+        this.fetchLiveOrders(),
+        this.fetchLiveDoctors(),
+        this.fetchLiveAppointments()
+      ]);
+      this.render();
+    });
   }
 
   render() {
     const state = store.getState();
-    const activePatient = state.patients.find(p => p.id === state.activePatientId) || state.patients[0];
+    const currentUser = authService.getCurrentUser() || state.currentUser;
+    const activePatient = (currentUser && currentUser.role === "PATIENT") 
+      ? currentUser 
+      : (state.patients.find(p => p.id === state.activePatientId) || state.patients[0]);
+    
+    const patientName = activePatient.full_name || activePatient.name || "Patient";
+    const patientFirstName = patientName.split(" ")[0];
+    const vitals = activePatient.recent_vitals || { bp: "124/82 mmHg", spO2: "99%", pulse: "74 bpm" };
+
     const radius = state.searchRadiusKm;
     const queue = state.queue;
     const myToken = queue.tokens.find(t => t.patient_id === activePatient.id) || queue.tokens[0];
-    const orders = orderService.getOrders();
+    const liveOrdersList = this.liveOrders && this.liveOrders.length > 0 ? this.liveOrders : [];
+    const ordersCount = liveOrdersList.length;
 
     this.container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: var(--space-xl); margin-top: var(--space-lg);" role="region" aria-label="PulseCare Patient Interface">
@@ -59,7 +85,7 @@ export class PatientPortalComponent {
 
               <div>
                 <h1 class="heading-2" style="font-size: 26px; line-height: 1.2; margin-bottom: 2px;">
-                  Welcome back, ${activePatient.full_name.split(" ")[0]}
+                  Welcome back, ${patientFirstName}
                 </h1>
                 <div class="body-sm" style="color: var(--color-charcoal);">
                   OPD Queue: <strong>${queue.clinic_name}</strong> • Attending: <strong>${queue.doctor_in_charge}</strong>
@@ -71,13 +97,13 @@ export class PatientPortalComponent {
             <div style="display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap;">
               <div style="display: flex; gap: var(--space-xs);">
                 <span class="badge-tag-yellow" style="background: #ffffff; border-color: #e0e2e8; font-size: 12px;">
-                  BP: <strong>${activePatient.recent_vitals.bp}</strong>
+                  BP: <strong>${vitals.bp}</strong>
                 </span>
                 <span class="badge-tag-yellow" style="background: #ffffff; border-color: #e0e2e8; font-size: 12px;">
-                  SpO2: <strong>${activePatient.recent_vitals.spO2}</strong>
+                  SpO2: <strong>${vitals.spO2}</strong>
                 </span>
                 <span class="badge-tag-yellow" style="background: #ffffff; border-color: #e0e2e8; font-size: 12px;">
-                  Heart Rate: <strong>${activePatient.recent_vitals.pulse}</strong>
+                  Heart Rate: <strong>${vitals.pulse}</strong>
                 </span>
               </div>
 
@@ -103,7 +129,10 @@ export class PatientPortalComponent {
               🗄️ EMR Health Vault & QR
             </button>
             <button class="pill-tab ${this.activeTab === 'orders' ? 'pill-tab-active' : ''}" data-tab="orders">
-              📦 Medicine Orders (${orders.length})
+              📦 Medicine Orders (${ordersCount})
+            </button>
+            <button class="pill-tab btn-patient-sync-data" style="margin-left: auto; background: #ffffff; border-color: #86efac; color: #166534; font-weight: 700;">
+              <span>🔄 Refresh Live Data</span>
             </button>
           </div>
         </div>
@@ -294,9 +323,10 @@ export class PatientPortalComponent {
   // =========================================================================
   renderDoctorDiscovery() {
     const specialties = ["ALL", "Internal Medicine", "Cardiology", "Pediatrics", "Dermatology"];
+    const baseDocs = this.liveDoctors && this.liveDoctors.length > 0 ? this.liveDoctors : DOCTORS_DIRECTORY;
     const filteredDocs = this.selectedSpecialty === "ALL"
-      ? DOCTORS_DIRECTORY
-      : DOCTORS_DIRECTORY.filter(d => d.specialty === this.selectedSpecialty);
+      ? baseDocs
+      : baseDocs.filter(d => (d.specialty || "").toLowerCase().includes(this.selectedSpecialty.toLowerCase()));
 
     return `
       <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
@@ -316,6 +346,46 @@ export class PatientPortalComponent {
             Showing <strong>${filteredDocs.length}</strong> verified practitioners
           </div>
         </div>
+
+        ${this.bookedAppointment ? `
+          <!-- Active Appointment Status Card (Real MongoDB Data) -->
+          <div class="card-base" style="background: #fffbeb; border: 2px solid #fde68a; border-radius: var(--radius-xl); padding: var(--space-xl); box-shadow: var(--shadow-card);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="badge-promo" style="background: ${this.bookedAppointment.status === 'CONFIRMED' ? '#10b981' : '#f59e0b'}; color: #ffffff; font-weight: 800;">
+                    ${this.bookedAppointment.status === 'CONFIRMED' ? '🟢 APPOINTMENT CONFIRMED' : '🟡 BOOKING REQUESTED'}
+                  </span>
+                  <span style="font-size: 13px; font-weight: 800; color: #92400e; font-family: monospace;">TOKEN: ${this.bookedAppointment.tokenNumber || this.bookedAppointment.token}</span>
+                </div>
+                <h3 style="font-size: 22px; font-weight: 800; color: #78350f; margin-top: 8px; margin-bottom: 2px;">
+                  ${this.bookedAppointment.doctorName}
+                </h3>
+                <p style="font-size: 13px; color: #92400e; margin: 0;">
+                  ${this.bookedAppointment.department} • ${this.bookedAppointment.clinicName}
+                </p>
+                <div style="font-size: 12px; color: #b45309; margin-top: 4px;">
+                  📍 ${this.bookedAppointment.clinicAddress}
+                </div>
+              </div>
+
+              <div style="text-align: right; background: #ffffff; padding: 12px 18px; border-radius: var(--radius-lg); border: 1px solid #fef3c7; box-shadow: var(--shadow-sm);">
+                <div style="font-size: 11px; color: #92400e; font-weight: 600;">Status</div>
+                <div style="font-size: 15px; font-weight: 800; color: ${this.bookedAppointment.status === 'CONFIRMED' ? '#15803d' : '#d97706'}; margin-top: 2px;">
+                  ${this.bookedAppointment.status === 'CONFIRMED' ? '● Confirmed by Doctor' : '● Waiting for Doctor'}
+                </div>
+                <div style="font-size: 12px; color: #78350f; margin-top: 4px; font-weight: 700;">
+                  Fee: ₹${this.bookedAppointment.consultationFee || 600}
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid #fde68a; font-size: 12px; color: #92400e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <span>📅 Date: <strong>${this.bookedAppointment.date}</strong> at <strong>${this.bookedAppointment.timeSlot || this.bookedAppointment.time}</strong></span>
+              <span>🔒 Record saved to MongoDB Atlas collection <code>appointments</code></span>
+            </div>
+          </div>
+        ` : ''}
 
         <!-- Doctor Cards Grid -->
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg);">
@@ -542,7 +612,13 @@ export class PatientPortalComponent {
   // =========================================================================
   renderHealthVault() {
     const state = store.getState();
-    const activePatient = state.patients.find(p => p.id === state.activePatientId) || state.patients[0];
+    const currentUser = authService.getCurrentUser() || state.currentUser;
+    const activePatient = (currentUser && currentUser.role === "PATIENT") 
+      ? currentUser 
+      : (state.patients.find(p => p.id === state.activePatientId) || state.patients[0]);
+
+    const patientFullName = activePatient.full_name || activePatient.name || "Patient";
+    const abhaId = activePatient.patient_profile?.abha_id || activePatient.abha_id || "91-8842-1094-3201";
 
     return `
       <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
@@ -554,10 +630,10 @@ export class PatientPortalComponent {
                 ABDM LONGITUDINAL HEALTH VAULT
               </span>
               <h2 class="display-lg" style="font-size: 28px; line-height: 1.2;">
-                ${activePatient.full_name}'s Medical History
+                ${patientFullName}'s Medical History
               </h2>
               <div class="body-sm" style="color: var(--color-charcoal); margin-top: 4px;">
-                Ayushman Bharat ABHA Health ID: <strong style="font-family: var(--font-family-mono); color: var(--color-primary);">${activePatient.abha_id}</strong>
+                Ayushman Bharat ABHA Health ID: <strong style="font-family: var(--font-family-mono); color: var(--color-primary);">${abhaId}</strong>
               </div>
             </div>
 
@@ -637,65 +713,165 @@ export class PatientPortalComponent {
     `;
   }
 
+  async fetchLiveOrders() {
+    try {
+      const user = authService.getCurrentUser();
+      const list = await orderService.getMyOrders(user?.id || "usr-pat-001");
+      if (Array.isArray(list) && list.length > 0) {
+        this.liveOrders = list;
+        this.render();
+      }
+    } catch (e) {
+      console.warn("Could not fetch live patient orders:", e);
+    }
+  }
+
+  async fetchLiveDoctors() {
+    try {
+      const docs = await authService.getDoctors(this.selectedSpecialty);
+      if (Array.isArray(docs) && docs.length > 0) {
+        this.liveDoctors = docs;
+        this.render();
+      }
+    } catch (e) {
+      console.warn("Could not fetch live doctors from MongoDB:", e);
+    }
+  }
+
+  async fetchLiveAppointments() {
+    try {
+      const user = authService.getCurrentUser();
+      const patientId = user?.id || "usr-pat-001";
+      const apts = await authService.getPatientAppointments(patientId);
+      if (Array.isArray(apts) && apts.length > 0) {
+        // Pick the most recent active or requested appointment
+        const candidate = apts.find(a => a.status === "REQUESTED" || a.status === "CONFIRMED" || a.status === "IN_CONSULT") || apts[0];
+        if (candidate) {
+          this.bookedAppointment = candidate;
+          this.render();
+        }
+      }
+    } catch (e) {
+      console.warn("Could not fetch live appointments from MongoDB:", e);
+    }
+  }
+
   // =========================================================================
   // 5. MEDICINE ORDERS & REAL-TIME STATE MACHINE TRACKING
   // =========================================================================
   renderOrdersTracking() {
-    const orders = orderService.getOrders();
+    const orders = this.liveOrders && this.liveOrders.length > 0 ? this.liveOrders : orderService.getOrders();
 
     return `
       <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
         
         <div class="card-base" style="background: #ffffff; border: 1px solid var(--color-hairline); box-shadow: var(--shadow-card);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); padding-bottom: var(--space-xs); border-bottom: 1px solid var(--color-hairline);">
-            <h3 class="heading-3" style="font-size: 18px;">Active Medicine Orders & Telemetry</h3>
-            <span class="badge-tag-yellow" style="font-size: 11px;">${orders.length} Active Orders</span>
+            <div>
+              <h3 class="heading-3" style="font-size: 18px; margin: 0;">Active Medicine Orders & Telemetry</h3>
+              <div style="font-size: 11px; color: var(--color-slate); margin-top: 2px;">
+                Live MongoDB Atlas Order State Machine
+              </div>
+            </div>
+            <button class="button-secondary btn-refresh-patient-orders" style="font-size: 11px; padding: 4px 10px; background: #fff;">
+              <span>🔄 Refresh Status</span>
+            </button>
           </div>
 
           ${orders.length > 0 ? `
             <div style="display: flex; flex-direction: column; gap: var(--space-md);">
-              ${orders.map(order => `
-                <div style="padding: var(--space-lg); background: var(--color-surface); border: 1px solid var(--color-hairline); border-radius: var(--radius-xl);">
-                  <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-sm);">
-                    <div>
-                      <div style="font-weight: 700; font-size: 16px; color: var(--color-primary);">Order #${order.id}</div>
-                      <div style="font-size: 13px; color: var(--color-slate); margin-top: 2px;">
-                        Pharmacy: <strong>${order.pharmacyName}</strong>
+              ${orders.map(order => {
+                const isPlaced = order.status === "PLACED";
+                const isConfirmed = order.status === "CONFIRMED";
+                const isPacked = order.status === "PACKED";
+                const isReady = order.status === "READY" || order.status === "READY_FOR_PICKUP";
+                const isDispensed = order.status === "DISPENSED" || order.status === "COMPLETED";
+
+                const step1Done = true;
+                const step2Done = isConfirmed || isPacked || isReady || isDispensed;
+                const step3Done = isPacked || isReady || isDispensed;
+                const step4Done = isReady || isDispensed;
+
+                return `
+                  <div style="padding: var(--space-lg); background: var(--color-surface); border: 1px solid var(--color-hairline); border-radius: var(--radius-xl);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-sm);">
+                      <div>
+                        <div style="font-weight: 700; font-size: 16px; color: var(--color-primary);">Order #${order.orderNumber || order.id}</div>
+                        <div style="font-size: 13px; color: var(--color-slate); margin-top: 2px;">
+                          Pharmacy: <strong>${order.pharmacyName}</strong>
+                        </div>
+                      </div>
+
+                      <div style="text-align: right;">
+                        <span class="badge-promo" style="background: ${isReady ? '#10b981' : isDispensed ? '#475569' : 'var(--color-brand-yellow)'}; color: ${isReady || isDispensed ? '#ffffff' : 'var(--color-primary)'}; font-size: 11px; font-weight: 800;">
+                          ● ${order.status.replace(/_/g, ' ')}
+                        </span>
+                        <div style="font-size: 16px; font-weight: 800; font-family: var(--font-family-display); color: var(--color-primary); margin-top: 4px;">
+                          Total: ₹${order.totalAmount}
+                        </div>
                       </div>
                     </div>
 
-                    <div style="text-align: right;">
-                      <span class="badge-promo" style="background: var(--color-brand-yellow); color: var(--color-primary); font-size: 11px;">
-                        ● ${order.status.replace(/_/g, ' ')}
-                      </span>
-                      <div style="font-size: 16px; font-weight: 800; font-family: var(--font-family-display); color: var(--color-primary); margin-top: 4px;">
-                        Total: ₹${order.totalAmount}
+                    <!-- 4-Stage State Machine Tracker Bar (Real MongoDB Synced) -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xs); margin: var(--space-md) 0;">
+                      <div style="padding: 8px; background: ${step1Done ? '#ecfdf5' : '#f1f5f9'}; border: 1px solid ${step1Done ? '#a7f3d0' : '#e2e8f0'}; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: ${step1Done ? '#065f46' : '#94a3b8'};">
+                        1. Order Placed ${step1Done ? '✓' : '○'}
+                      </div>
+                      <div style="padding: 8px; background: ${step2Done ? '#ecfdf5' : '#f1f5f9'}; border: 1px solid ${step2Done ? '#a7f3d0' : '#e2e8f0'}; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: ${step2Done ? '#065f46' : '#94a3b8'};">
+                        2. Confirmed ${step2Done ? '✓' : '○'}
+                      </div>
+                      <div style="padding: 8px; background: ${step3Done ? '#ecfdf5' : '#f1f5f9'}; border: 1px solid ${step3Done ? '#a7f3d0' : '#e2e8f0'}; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: ${step3Done ? '#065f46' : '#94a3b8'};">
+                        3. Packed ${step3Done ? '✓' : '○'}
+                      </div>
+                      <div style="padding: 8px; background: ${step4Done ? '#dcfce7' : '#f1f5f9'}; border: 1px solid ${step4Done ? '#86efac' : '#e2e8f0'}; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: ${step4Done ? '#166534' : '#94a3b8'};">
+                        ${order.fulfillmentType === 'COUNTER_PICKUP' ? `4. Ready (Token: ${order.pickupToken || 'PK-2409'})` : '4. Out for Delivery'} ${step4Done ? '✓' : '○'}
                       </div>
                     </div>
-                  </div>
 
-                  <!-- 4-Stage State Machine Tracker Bar -->
-                  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xs); margin: var(--space-md) 0;">
-                    <div style="padding: 8px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: #065f46;">
-                      1. Order Placed ✓
-                    </div>
-                    <div style="padding: 8px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: #065f46;">
-                      2. Confirmed ✓
-                    </div>
-                    <div style="padding: 8px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: #065f46;">
-                      3. Packed ✓
-                    </div>
-                    <div style="padding: 8px; background: #fff8e0; border: 1px solid #fde68a; border-radius: var(--radius-sm); text-align: center; font-size: 11px; font-weight: 700; color: var(--color-yellow-dark);">
-                      ${order.fulfillmentType === 'COUNTER_PICKUP' ? `4. Ready (Token: ${order.pickupToken})` : '4. Out for Delivery'}
-                    </div>
-                  </div>
+                    <!-- Ordered Medicines Items Breakdown (Real MongoDB Data) -->
+                    <div style="background: #ffffff; border: 1px solid var(--color-hairline); border-radius: var(--radius-lg); padding: 12px 16px; margin: 12px 0;">
+                      <div style="font-size: 13px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <span>📋 Ordered Medicines (${(order.medicines || order.items || []).length} items):</span>
+                        <span style="font-size: 11px; color: var(--color-slate); font-weight: 500;">Prescribed by ${order.doctorName || 'Dr. Vikram Sethi, MD'}</span>
+                      </div>
 
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--color-slate); border-top: 1px solid var(--color-hairline); padding-top: var(--space-xs);">
-                    <span>Fulfillment: <strong>${order.fulfillmentType === 'COUNTER_PICKUP' ? 'Counter Pickup' : 'Home Delivery'}</strong></span>
-                    <span>Estimated time: <strong>${order.estimatedMinutes} mins</strong></span>
+                      <div style="display: flex; flex-direction: column; gap: 6px;">
+                        ${(order.medicines || order.items || []).map((item, idx) => `
+                          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 10px; background: #f8fafc; border-radius: 6px; border: 1px solid #f1f5f9;">
+                            <div>
+                              <strong style="color: var(--color-primary);">${idx + 1}. ${item.name || item.drugName}</strong>
+                              <div style="font-size: 11px; color: var(--color-slate); margin-top: 1px;">
+                                Quantity: <strong>${item.quantity || 1} ${item.dosageForm || 'Tablets'}</strong>
+                                ${item.isGeneric ? ' • <span style="color: #15803d; font-weight: 700;">Jan Aushadhi Generic (61% Savings)</span>' : ''}
+                              </div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--color-primary);">
+                              ₹${(item.price || item.unitPrice || 40) * (item.quantity || 1)}
+                            </div>
+                          </div>
+                        `).join("")}
+                      </div>
+
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--color-hairline); font-size: 12px;">
+                        <span style="color: var(--color-slate);">Subtotal: ₹${order.subtotal || order.totalAmount} • Delivery: ₹${order.deliveryFee || 0}</span>
+                        <span style="font-weight: 800; font-size: 14px; color: var(--color-primary);">Total Paid: ₹${order.totalAmount}</span>
+                      </div>
+                    </div>
+
+                    ${isReady ? `
+                      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 10px 16px; margin-bottom: 8px; font-size: 13px; color: #15803d; font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+                        <span>🟢 Ready for Pickup at Pharmacy Counter!</span>
+                        <span style="font-family: monospace; font-size: 14px; background: #fff; padding: 3px 10px; border-radius: 4px; border: 1px solid #86efac; color: #166534;">TOKEN: ${order.pickupToken || 'PK-2409'}</span>
+                      </div>
+                    ` : ''}
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--color-slate); border-top: 1px solid var(--color-hairline); padding-top: var(--space-xs);">
+                      <span>Fulfillment: <strong>${order.fulfillmentType === 'COUNTER_PICKUP' ? 'Counter Pickup' : 'Home Delivery'}</strong></span>
+                      <span>Estimated time: <strong>${order.estimatedMinutes || 10} mins</strong></span>
+                    </div>
                   </div>
-                </div>
-              `).join("")}
+                `;
+              }).join("")}
             </div>
           ` : `
             <div style="text-align: center; padding: var(--space-xl); color: var(--color-slate);">
@@ -789,7 +965,8 @@ export class PatientPortalComponent {
     this.container.querySelectorAll(".btn-open-booking, .btn-slot").forEach(btn => {
       btn.addEventListener("click", () => {
         const docId = btn.getAttribute("data-doc-id");
-        this.bookingModalDoctor = DOCTORS_DIRECTORY.find(d => d.id === docId) || DOCTORS_DIRECTORY[0];
+        const allDocs = this.liveDoctors && this.liveDoctors.length > 0 ? this.liveDoctors : DOCTORS_DIRECTORY;
+        this.bookingModalDoctor = allDocs.find(d => d.id === docId) || allDocs[0];
         this.render();
       });
     });
@@ -802,15 +979,36 @@ export class PatientPortalComponent {
       });
     });
 
-    // Confirm Appointment Booking
+    // Confirm Appointment Booking (Live MongoDB Atlas Flow)
     const confirmBookingBtn = this.container.querySelector("#btn-confirm-appointment-booking");
     if (confirmBookingBtn) {
-      confirmBookingBtn.addEventListener("click", () => {
+      confirmBookingBtn.addEventListener("click", async () => {
         const doc = this.bookingModalDoctor;
         this.bookingModalDoctor = null;
-        store.showToast(`Appointment confirmed with ${doc.name}! Token: T-104`, "success");
-        this.activeTab = "prescriptions";
-        this.render();
+
+        const currentUser = authService.getCurrentUser() || {};
+        try {
+          const newApt = await authService.bookAppointment({
+            doctorId: doc.id || "usr-doc-001",
+            doctorName: doc.name || "Dr. Vikram Sethi, MD",
+            department: doc.specialty || "Internal Medicine",
+            clinicName: doc.clinic_affiliation || "Pulse Care Clinic & Diagnostic Center",
+            clinicAddress: doc.clinic_address || "80 Feet Rd, 4th Block, Koramangala, Bengaluru",
+            consultationFee: doc.consultation_fee || 600,
+            date: new Date().toISOString().split("T")[0],
+            timeSlot: "11:15 AM",
+            patientName: currentUser.full_name || "Anil Kumar Verma",
+            patientId: currentUser.id || "usr-pat-001",
+            symptoms: ["OPD Consultation & Clinical Review"],
+          });
+
+          this.bookedAppointment = newApt;
+          store.showToast(`Booking Requested with ${doc.name}! Token: ${newApt.tokenNumber || newApt.token}`, "success");
+          this.activeTab = "doctors";
+          this.render();
+        } catch (err) {
+          store.showToast(`Booking error: ${err.message}`, "danger");
+        }
       });
     }
 
@@ -851,30 +1049,51 @@ export class PatientPortalComponent {
       });
     }
 
-    // 1-Click Order Checkout
+    // 1-Click Order Checkout (Live MongoDB Atlas Integration)
     this.container.querySelectorAll(".btn-order-checkout").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const pharmacyId = btn.getAttribute("data-pharmacy-id");
-        const pharmacyName = btn.getAttribute("data-pharmacy-name");
-        const fulfillmentType = btn.getAttribute("data-fulfillment");
+      btn.addEventListener("click", async () => {
+        const rawPharmacyId = btn.getAttribute("data-pharmacy-id") || "usr-pharma-001";
+        const pharmacyId = rawPharmacyId.startsWith("usr-") ? rawPharmacyId : `usr-${rawPharmacyId}`;
+        const pharmacyName = btn.getAttribute("data-pharmacy-name") || "MedPlus 24/7 Super Pharmacy";
+        const fulfillmentType = btn.getAttribute("data-fulfillment") || "COUNTER_PICKUP";
+        const currentUser = authService.getCurrentUser() || {};
 
-        const order = orderService.createOrder({
-          pharmacyId,
-          pharmacyName,
-          fulfillmentType,
-          items: [
-            { drugName: "Cefixime 200mg Generic", quantity: 10, unitPrice: 60.00, isGeneric: true },
-            { drugName: "Pantoprazole 40mg Generic", quantity: 7, unitPrice: 32.00, isGeneric: true },
-            { drugName: "Paracetamol 650mg Generic", quantity: 6, unitPrice: 14.00, isGeneric: true }
-          ],
-          totalAmount: 106.00
-        });
+        try {
+          const order = await orderService.createOrder({
+            patientId: currentUser.id || "usr-pat-001",
+            patientName: currentUser.full_name || "Anil Kumar Verma",
+            pharmacyId: pharmacyId,
+            pharmacyName: pharmacyName,
+            fulfillmentType: fulfillmentType,
+            items: [
+              { name: "Jan Aushadhi Cefixime 200mg", drugName: "Cefixime 200mg Generic", quantity: 10, price: 60.00, isGeneric: true },
+              { name: "Jan Aushadhi Pan 40", drugName: "Pantoprazole 40mg Generic", quantity: 7, price: 32.00, isGeneric: true },
+              { name: "Paracetamol 650mg Generic", drugName: "Paracetamol 650mg Generic", quantity: 6, price: 14.00, isGeneric: true }
+            ],
+            totalAmount: 106.00
+          });
 
-        store.showToast(`Order #${order.id} placed at ${pharmacyName}!`, "success");
-        this.activeTab = "orders";
-        this.render();
+          await this.fetchLiveOrders();
+          window.dispatchEvent(new CustomEvent("syncPharmacyQueue", { detail: { order } }));
+          window.dispatchEvent(new CustomEvent("syncLivePlatformData"));
+          store.showToast(`Order #${order.orderNumber || order.id} placed at ${pharmacyName}!`, "success");
+          this.activeTab = "orders";
+          this.render();
+        } catch (err) {
+          store.showToast(`Order placement failed: ${err.message}`, "danger");
+        }
       });
     });
+
+    // Refresh Live Orders in Patient Portal
+    const refreshOrdersBtn = this.container.querySelector(".btn-refresh-patient-orders");
+    if (refreshOrdersBtn) {
+      refreshOrdersBtn.addEventListener("click", async () => {
+        await this.fetchLiveOrders();
+        store.showToast("Order status synced with MongoDB Atlas!", "success");
+        this.render();
+      });
+    }
 
     // Counter Dispensing QR Trigger
     const qrBtn = this.container.querySelector("#btn-show-counter-qr");

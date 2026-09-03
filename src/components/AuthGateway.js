@@ -1,9 +1,8 @@
 /**
  * NEXORA PULSE - UNIFIED AUTHENTICATION & ROLE GATEWAY MODAL
- * Connected to Supabase Auth via src/supabaseClient.js with multi-role redirection
+ * Connected to Express REST API & MongoDB Atlas
  */
 
-import { supabase, SUPABASE_PUBLIC_KEY } from "../supabaseClient.js";
 import { authService } from "../services/authService.js";
 import { store } from "../state/store.js";
 
@@ -311,14 +310,21 @@ export class AuthGatewayComponent {
 
   async handleRegister() {
     try {
+      const fullName = this.container.querySelector("#modal-reg-fullname")?.value?.trim() || "";
+      const phone = this.container.querySelector("#modal-reg-phone")?.value?.trim() || "";
+      const email = this.container.querySelector("#modal-reg-email")?.value?.trim() || "";
+      const password = this.container.querySelector("#modal-reg-password")?.value || "";
+
+      if (!fullName || !email || !password) {
+        this.errorMessage = "Please fill in all mandatory fields: Full Name, Email, and Password.";
+        this.isSubmitting = false;
+        this.render();
+        return;
+      }
+
       this.isSubmitting = true;
       this.errorMessage = "";
       this.render();
-
-      const fullName = this.container.querySelector("#modal-reg-fullname")?.value || "";
-      const phone = this.container.querySelector("#modal-reg-phone")?.value || "";
-      const email = this.container.querySelector("#modal-reg-email")?.value || "";
-      const password = this.container.querySelector("#modal-reg-password")?.value || "";
 
       const metadata = {
         full_name: fullName,
@@ -326,7 +332,7 @@ export class AuthGatewayComponent {
         role: this.selectedRole
       };
 
-      const session = authService.register({ ...metadata, email, password });
+      const session = await authService.register({ ...metadata, email, password });
       store.closeModal();
       store.showToast(`Account created for ${session.user.full_name}!`, "success");
 

@@ -17,6 +17,11 @@ export class AdminVerificationConsoleComponent {
     this.allUsers = [];
     this.isLoading = true;
     this.init();
+
+    window.addEventListener("syncLivePlatformData", async () => {
+      await this.fetchData();
+      this.render();
+    });
   }
 
   async init() {
@@ -66,27 +71,27 @@ export class AdminVerificationConsoleComponent {
             </div>
 
             <!-- Platform KPI Counters -->
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; width: 100%; max-width: 600px;">
               
-              <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; min-width: 95px;">
+              <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; flex: 1 1 110px; min-width: 90px;">
                 <div style="font-size: 10px; color: #d8b4fe; font-weight: 600;">Total Users</div>
                 <div style="font-size: 22px; font-weight: 800; color: #c084fc; margin-top: 2px;">${this.allUsers.length}</div>
                 <div style="font-size: 9px; color: #e9d5ff;">In MongoDB</div>
               </div>
 
-              <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; min-width: 95px;">
+              <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; flex: 1 1 110px; min-width: 90px;">
                 <div style="font-size: 10px; color: #93c5fd; font-weight: 600;">Doctors</div>
                 <div style="font-size: 22px; font-weight: 800; color: #60a5fa; margin-top: 2px;">${activeDoctors.length}</div>
                 <div style="font-size: 9px; color: #bfdbfe;">Registered</div>
               </div>
 
-              <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; min-width: 95px;">
+              <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; flex: 1 1 110px; min-width: 90px;">
                 <div style="font-size: 10px; color: #fde68a; font-weight: 600;">Pharmacies</div>
                 <div style="font-size: 22px; font-weight: 800; color: #fbbf24; margin-top: 2px;">${activePharmacies.length}</div>
                 <div style="font-size: 9px; color: #fef3c7;">Registered</div>
               </div>
 
-              <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; min-width: 95px;">
+              <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-lg); padding: 10px 14px; text-align: center; flex: 1 1 110px; min-width: 90px;">
                 <div style="font-size: 10px; color: #fca5a5; font-weight: 600;">Pending Audit</div>
                 <div style="font-size: 22px; font-weight: 800; color: #ef4444; margin-top: 2px;">${pendingUsers.length}</div>
                 <div style="font-size: 9px; color: #f87171;">Action Required</div>
@@ -97,7 +102,7 @@ export class AdminVerificationConsoleComponent {
         </div>
 
         <!-- Section Navigation Tabs -->
-        <div style="display: flex; gap: 8px; border-bottom: 2px solid var(--color-hairline); padding-bottom: 4px;">
+        <div class="horizontal-scroll-bar" style="display: flex; gap: 8px; border-bottom: 2px solid var(--color-hairline); padding-bottom: 4px; overflow-x: auto;">
           <button class="pill-tab ${this.activeTab === 'logs' ? 'pill-tab-active' : ''}" id="tab-admin-logs" style="padding: 8px 18px; font-size: 13px;">
             <span>🔐 Live Login History & Audit Trail (${this.loginLogs.length})</span>
           </button>

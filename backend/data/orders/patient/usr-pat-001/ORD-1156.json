@@ -1,0 +1,60 @@
+{
+  "id": "ord-1156",
+  "orderNumber": "ORD-1156",
+  "patientId": "usr-pat-001",
+  "patientName": "Anil Kumar Verma",
+  "pharmacyId": "pharma-003",
+  "pharmacyName": "Jan Aushadhi Generic Kendra",
+  "doctorId": "usr-doc-001",
+  "doctorName": "Dr. Vikram Sethi, MD",
+  "medicines": [
+    {
+      "drugName": "Cefixime 200mg Generic",
+      "quantity": 10,
+      "unitPrice": 60,
+      "isGeneric": true
+    },
+    {
+      "drugName": "Pantoprazole 40mg Generic",
+      "quantity": 7,
+      "unitPrice": 32,
+      "isGeneric": true
+    },
+    {
+      "drugName": "Paracetamol 650mg Generic",
+      "quantity": 6,
+      "unitPrice": 14,
+      "isGeneric": true
+    }
+  ],
+  "items": [
+    {
+      "drugName": "Cefixime 200mg Generic",
+      "quantity": 10,
+      "unitPrice": 60,
+      "isGeneric": true
+    },
+    {
+      "drugName": "Pantoprazole 40mg Generic",
+      "quantity": 7,
+      "unitPrice": 32,
+      "isGeneric": true
+    },
+    {
+      "drugName": "Paracetamol 650mg Generic",
+      "quantity": 6,
+      "unitPrice": 14,
+      "isGeneric": true
+    }
+  ],
+  "subtotal": 106,
+  "deliveryFee": 30,
+  "totalAmount": 136,
+  "status": "DISPENSED",
+  "fulfillmentType": "HOME_DELIVERY",
+  "pickupToken": null,
+  "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+  "estimatedMinutes": 35,
+  "created_at": "2026-09-03T06:01:32.266Z",
+  "updatedAt": "2026-09-03T06:02:20.117Z"
+}

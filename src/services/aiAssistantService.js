@@ -73,6 +73,29 @@ export class AiAssistantService {
       return { guardrail: true, guardrail_data: guardrail, text: guardrail.message, model: "Guardrail Engine" };
     }
 
+    // 1. Try secure backend proxy first (protects API keys on server)
+    try {
+      const apiBase = typeof window !== "undefined" && window.location && window.location.origin ? window.location.origin : "";
+      const proxyRes = await fetch(`${apiBase}/api/ai/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, language }),
+      });
+      if (proxyRes.ok) {
+        const proxyData = await proxyRes.json();
+        if (proxyData.success && proxyData.text) {
+          return {
+            guardrail: false,
+            text: proxyData.text,
+            model: proxyData.model || "Google Gemini (Secure Proxy)",
+          };
+        }
+      }
+    } catch (proxyErr) {
+      console.warn("Backend AI proxy unreachable, trying direct fallback:", proxyErr);
+    }
+
+    // 2. Direct client fallback if API key exists in client
     const apiKey = getGeminiApiKey();
 
     if (apiKey && apiKey.length > 5) {
@@ -148,9 +171,13 @@ Guidelines:
 
     const modelsToTry = [
       GEMINI_DEFAULT_MODEL,
+      "gemini-3.7-flash",
+      "gemini-3.6-flash",
+      "gemini-3.5-flash",
+      "gemini-flash-latest",
+      "gemini-2.5-flash",
       "gemini-2.0-flash",
-      "gemini-1.5-flash",
-      "gemini-1.5-pro"
+      "gemini-1.5-flash"
     ];
 
     let lastError = null;
@@ -178,10 +205,15 @@ Guidelines:
 
         const data = await response.json();
         const candidate = data.candidates?.[0];
-        const text = candidate?.content?.parts?.[0]?.text;
+        const parts = candidate?.content?.parts || [];
+        const nonThoughtParts = parts.filter(p => !p.thought);
+        const textParts = (nonThoughtParts.length > 0 ? nonThoughtParts : parts)
+          .map(p => p.text)
+          .filter(Boolean)
+          .join("\n");
 
-        if (text && text.trim().length > 0) {
-          return text.trim();
+        if (textParts && textParts.trim().length > 0) {
+          return textParts.trim();
         }
       } catch (e) {
         lastError = e;

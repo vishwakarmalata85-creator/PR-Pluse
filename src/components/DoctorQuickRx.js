@@ -19,6 +19,11 @@ export class DoctorQuickRxComponent {
     this.activeTab = "appointments"; // 'appointments' | 'rx_builder'
     this.activePatient = null;
     this.init();
+
+    window.addEventListener("syncLivePlatformData", async () => {
+      await this.fetchAppointments();
+      this.render();
+    });
   }
 
   async init() {
@@ -67,7 +72,7 @@ export class DoctorQuickRxComponent {
     const prescribedItems = state.prescribedItems;
     const selectedDiagnoses = state.selectedDiagnoses;
 
-    const pendingCount = this.appointments.filter(a => a.status === "PENDING").length;
+    const pendingCount = this.appointments.filter(a => a.status === "REQUESTED" || a.status === "PENDING").length;
     const confirmedCount = this.appointments.filter(a => a.status === "CONFIRMED").length;
     const inConsultCount = this.appointments.filter(a => a.status === "IN_CONSULT").length;
     const completedCount = this.appointments.filter(a => a.status === "COMPLETED").length;
@@ -205,12 +210,12 @@ export class DoctorQuickRxComponent {
 
                     <!-- Action Buttons -->
                     <div style="display: flex; gap: 6px; margin-top: 8px; justify-content: flex-end;">
-                      ${apt.status === 'PENDING' ? `
+                      ${(apt.status === 'REQUESTED' || apt.status === 'PENDING') ? `
                         <button class="button-secondary btn-apt-action" data-action="ACCEPT" data-apt-id="${apt.id}" style="padding: 4px 10px; font-size: 11px; background: #ecfdf5; color: #047857; border-color: #a7f3d0;">
                           <span>✅ Accept</span>
                         </button>
                         <button class="button-secondary btn-apt-action" data-action="DECLINE" data-apt-id="${apt.id}" style="padding: 4px 8px; font-size: 11px; color: #b91c1c; border-color: #fecaca;">
-                          <span>✕</span>
+                          <span>✕ Reject</span>
                         </button>
                       ` : ''}
 
@@ -357,7 +362,11 @@ export class DoctorQuickRxComponent {
     // Refresh queue button
     const refreshBtn = this.container.querySelector("#btn-refresh-appointments");
     if (refreshBtn) {
-      refreshBtn.addEventListener("click", () => this.fetchAppointments());
+      refreshBtn.addEventListener("click", async () => {
+        await this.fetchAppointments();
+        store.showToast("OPD Appointment Queue synced with MongoDB Atlas!", "success");
+        this.render();
+      });
     }
 
     // Appointment Card Selection

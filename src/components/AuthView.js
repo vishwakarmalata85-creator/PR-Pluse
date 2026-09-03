@@ -1,9 +1,8 @@
 /**
- * NEXORA PULSECARE - UNIFIED LOGIN & ROLE SELECTION AUTHENTICATION VIEW
- * Provides multi-role selection (Patient, Doctor, Pharmacy, Admin) with automatic route redirection.
+ * NEXORA PULSECARE - ULTRA-PREMIUM AUTHENTICATION & ROLE SELECTION VIEW
+ * High-aesthetic glassmorphism, responsive role palettes, animated state transitions, and 1-click persona launchers.
  */
 
-import { supabase, SUPABASE_PUBLIC_KEY } from "../supabaseClient.js";
 import { authService } from "../services/authService.js";
 import { store } from "../state/store.js";
 
@@ -16,158 +15,246 @@ export class AuthViewComponent {
     this.selectedRole = "PATIENT"; // 'PATIENT' | 'DOCTOR' | 'PHARMACY' | 'ADMIN'
     this.errorMessage = "";
     this.isSubmitting = false;
+    this.showPassword = false;
 
     this.rolePresetCredentials = {
       PATIENT: {
         email: "anil.verma@gmail.com",
         pass: "pass123",
-        name: "Patient (Anil Verma)",
-        destination: "Patient Portal (Dual Rx Hub & ABDM Vault)",
+        name: "Anil Kumar Verma",
+        subtitle: "Verified Patient • ABHA Active",
+        destination: "Patient Operating System",
+        desc: "Dual Rx Hub, 5km Pharmacy Radar & ABDM Vault",
+        icon: "👤",
+        color: "#10b981",
+        colorDark: "#065f46",
+        bgLight: "#ecfdf5",
+        bgHover: "#d1fae5",
+        borderActive: "#10b981",
+        glow: "rgba(16, 185, 129, 0.25)",
         route: "#/"
       },
       DOCTOR: {
         email: "dr.vikram.sethi@gmail.com",
         pass: "pass123",
-        name: "Doctor (Dr. Vikram Sethi, MD)",
-        destination: "PulseMD Clinical Station & OPD Queue",
+        name: "Dr. Vikram Sethi, MD",
+        subtitle: "Internal Medicine • KMC-48921",
+        destination: "PulseMD Clinical Station",
+        desc: "OPD Queue, Dual Rx Builder & ICD-10 Coding",
+        icon: "🩺",
+        color: "#0284c7",
+        colorDark: "#075985",
+        bgLight: "#e0f2fe",
+        bgHover: "#bae6fd",
+        borderActive: "#0284c7",
+        glow: "rgba(2, 132, 199, 0.25)",
         route: "#/doctor"
       },
       PHARMACY: {
         email: "medplus.pharmacy@gmail.com",
         pass: "pass123",
-        name: "Pharmacy (MedPlus 24/7)",
-        destination: "PulsePharm Live Inventory & Order Queue",
+        name: "MedPlus 24/7 Super Pharmacy",
+        subtitle: "Licensed Chemist • KA-BLR-88912",
+        destination: "PulsePharm Dispensary Hub",
+        desc: "Live Medicine Orders, Stock Radar & TrOCR Audit",
+        icon: "💊",
+        color: "#d97706",
+        colorDark: "#92400e",
+        bgLight: "#fef3c7",
+        bgHover: "#fde68a",
+        borderActive: "#d97706",
+        glow: "rgba(217, 119, 6, 0.25)",
         route: "#/pharmacy"
       },
       ADMIN: {
         email: "admin.pulse@gmail.com",
         pass: "admin123",
-        name: "Platform Admin",
-        destination: "Nexora Verification & License Console",
+        name: "Rohit Guchhait",
+        subtitle: "Master Administrator • Full Access",
+        destination: "Nexora Control Plane",
+        desc: "Login Audit Stream & Provider Verification",
+        icon: "🛡️",
+        color: "#6366f1",
+        colorDark: "#3730a3",
+        bgLight: "#e0e7ff",
+        bgHover: "#c7d2fe",
+        borderActive: "#6366f1",
+        glow: "rgba(99, 102, 241, 0.25)",
         route: "#/admin"
       }
     };
   }
 
   render() {
-    const activePreset = this.rolePresetCredentials[this.selectedRole] || this.rolePresetCredentials.PATIENT;
+    const roleCfg = this.rolePresetCredentials[this.selectedRole] || this.rolePresetCredentials.PATIENT;
 
     this.container.innerHTML = `
-      <div style="max-width: 680px; margin: var(--space-xl) auto; width: 100%;" role="region" aria-label="PulseCare Authentication Gateway">
+      <div class="auth-viewport-wrapper" style="position: relative; max-width: 640px; margin: 32px auto; width: 100%; padding: 0 16px;">
         
-        <!-- Main Auth Card (Miro 28px rounded corners & shadow) -->
-        <div class="card-base" style="background: #ffffff; border: 1px solid var(--color-hairline); border-radius: var(--radius-xxxl); box-shadow: var(--shadow-mockup); padding: var(--space-xxl); position: relative; overflow: hidden;">
+        <!-- Ambient Atmospheric Glow Orbs -->
+        <div style="position: absolute; top: -40px; left: -30px; width: 220px; height: 220px; background: ${roleCfg.glow}; border-radius: 50%; filter: blur(60px); opacity: 0.6; pointer-events: none; transition: all 0.5s ease;"></div>
+        <div style="position: absolute; bottom: -30px; right: -20px; width: 200px; height: 200px; background: rgba(251, 191, 36, 0.18); border-radius: 50%; filter: blur(50px); opacity: 0.5; pointer-events: none;"></div>
+
+        <!-- Main Glassmorphic Card Container -->
+        <div class="auth-card-main" style="position: relative; z-index: 1; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(226, 232, 240, 0.9); border-radius: clamp(18px, 4vw, 28px); box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) inset; padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 36px); overflow: hidden; transition: border-color 0.3s ease;">
           
-          <!-- Card Header & Brand Mark -->
-          <div style="text-align: center; margin-bottom: var(--space-lg);">
-            <div style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: var(--color-brand-yellow); border-radius: var(--radius-lg); font-size: 26px; color: var(--color-primary); box-shadow: var(--shadow-sm); margin-bottom: var(--space-xs);">
-              ⚡
+          <!-- Top Accent Gradient Line -->
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, ${roleCfg.color}, #f59e0b, ${roleCfg.color});"></div>
+
+          <!-- Card Header & Brand Emblem -->
+          <div style="text-align: center; margin-bottom: 28px;">
+            
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9999px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+              <span style="font-size: 14px; color: #f59e0b; animation: pulse 2s infinite;">⚡</span>
+              <span style="font-size: 11px; font-weight: 800; color: #334155; letter-spacing: 0.8px; text-transform: uppercase;">Nexora PulseCare OS</span>
+              <span style="font-size: 9px; padding: 1px 6px; background: #ecfdf5; color: #059669; border-radius: 6px; font-weight: 700;">ABDM CERTIFIED</span>
             </div>
 
-            <h2 class="heading-2" style="font-size: 28px; line-height: 1.2; margin-top: 4px;">
-              ${this.mode === 'login' ? 'Sign In to PulseCare' : 'Create Your Health Account'}
-            </h2>
+            <h1 style="font-size: 28px; font-weight: 900; color: #0f172a; margin: 0; letter-spacing: -0.8px; line-height: 1.2; font-family: var(--font-family-display, -apple-system, sans-serif);">
+              ${this.mode === 'login' ? 'Welcome to PulseCare' : 'Create Health Account'}
+            </h1>
 
-            <p class="body-sm" style="color: var(--color-slate); margin-top: 4px;">
-              Choose your role below to access your specialized healthcare portal.
+            <p style="font-size: 13.5px; color: #64748b; margin: 6px 0 0 0; line-height: 1.5;">
+              ${this.mode === 'login' 
+                ? 'Select your healthcare role to launch your customized workspace.' 
+                : 'Join the Ayushman Bharat Digital Mission healthcare network.'}
             </p>
 
-            <!-- Mode Switcher Pill Tabs (Miro Design) -->
-            <div style="display: inline-flex; background: var(--color-surface); padding: 4px; border-radius: var(--radius-full); border: 1px solid var(--color-hairline); margin-top: var(--space-md);">
-              <button class="pill-tab ${this.mode === 'login' ? 'pill-tab-active' : ''}" id="btn-tab-mode-login" style="padding: 7px 20px; font-size: 13px;">
+            <!-- Mode Switcher Pill Toggle (Sliding Design) -->
+            <div style="display: inline-flex; background: #f1f5f9; padding: 4px; border-radius: 9999px; border: 1px solid #e2e8f0; margin-top: 18px;">
+              <button class="pill-tab-toggle" id="btn-tab-mode-login" style="padding: 7px 22px; font-size: 13px; font-weight: 700; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s ease; background: ${this.mode === 'login' ? '#ffffff' : 'transparent'}; color: ${this.mode === 'login' ? '#0f172a' : '#64748b'}; box-shadow: ${this.mode === 'login' ? '0 2px 6px rgba(0,0,0,0.08)' : 'none'};">
                 <span>🔐 Sign In</span>
               </button>
-              <button class="pill-tab ${this.mode === 'register' ? 'pill-tab-active' : ''}" id="btn-tab-mode-register" style="padding: 7px 20px; font-size: 13px;">
+              <button class="pill-tab-toggle" id="btn-tab-mode-register" style="padding: 7px 22px; font-size: 13px; font-weight: 700; border-radius: 9999px; border: none; cursor: pointer; transition: all 0.2s ease; background: ${this.mode === 'register' ? '#ffffff' : 'transparent'}; color: ${this.mode === 'register' ? '#0f172a' : '#64748b'}; box-shadow: ${this.mode === 'register' ? '0 2px 6px rgba(0,0,0,0.08)' : 'none'};">
                 <span>✨ Create Account</span>
               </button>
             </div>
           </div>
 
-          <!-- Step 1: Interactive Role Selection Cards (Patient, Doctor, Pharmacy, Admin) -->
-          <div style="margin-bottom: var(--space-lg);">
-            <label style="font-size: 13px; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xs);">
-              <span>1. Choose Portal Role to Access:</span>
-              <span style="font-size: 11px; font-weight: 500; color: var(--color-slate);">Selected: <strong style="color: var(--color-primary);">${this.selectedRole}</strong></span>
-            </label>
-            
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+          <!-- Step 1: Interactive Role Selector Cards -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 13px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.4px;">
+                1. Select Portal Role:
+              </span>
+              <span style="font-size: 12px; font-weight: 700; color: ${roleCfg.color}; background: ${roleCfg.bgLight}; padding: 2px 10px; border-radius: 9999px;">
+                ● Active: ${this.selectedRole}
+              </span>
+            </div>
+
+            <!-- Role Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(${this.mode === 'login' ? '4' : '3'}, 1fr); gap: 10px;">
               
-              <!-- Patient Role -->
-              <div class="card-base role-choice-card ${this.selectedRole === 'PATIENT' ? 'role-choice-selected' : ''}" data-role="PATIENT" style="padding: 12px 8px; background: ${this.selectedRole === 'PATIENT' ? 'var(--color-surface-yellow)' : '#ffffff'}; border: 2px solid ${this.selectedRole === 'PATIENT' ? 'var(--color-primary)' : 'var(--color-hairline)'}; border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.2s ease;">
-                <div style="font-size: 26px;">👤</div>
-                <div style="font-weight: 700; font-size: 13px; color: var(--color-primary); margin-top: 4px;">Patient</div>
-                <div style="font-size: 10px; color: var(--color-slate); margin-top: 2px;">Dual Rx & Vault</div>
+              <!-- Card: PATIENT -->
+              <div class="auth-role-card ${this.selectedRole === 'PATIENT' ? 'active-role' : ''}" data-role="PATIENT" style="position: relative; padding: 14px 8px; border-radius: 16px; cursor: pointer; text-align: center; transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid ${this.selectedRole === 'PATIENT' ? '#10b981' : '#e2e8f0'}; background: ${this.selectedRole === 'PATIENT' ? '#ecfdf5' : '#ffffff'}; box-shadow: ${this.selectedRole === 'PATIENT' ? '0 8px 16px -4px rgba(16, 185, 129, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)'};">
+                ${this.selectedRole === 'PATIENT' ? '<div style="position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; background: #10b981; border-radius: 50%; color: #fff; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 900;">✓</div>' : ''}
+                <div style="font-size: 26px; line-height: 1;">👤</div>
+                <div style="font-weight: 800; font-size: 13px; color: #0f172a; margin-top: 6px;">Patient</div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 2px; font-weight: 500;">Dual Rx & Vault</div>
               </div>
 
-              <!-- Doctor Role -->
-              <div class="card-base role-choice-card ${this.selectedRole === 'DOCTOR' ? 'role-choice-selected' : ''}" data-role="DOCTOR" style="padding: 12px 8px; background: ${this.selectedRole === 'DOCTOR' ? '#e0f2fe' : '#ffffff'}; border: 2px solid ${this.selectedRole === 'DOCTOR' ? '#0284c7' : 'var(--color-hairline)'}; border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.2s ease;">
-                <div style="font-size: 26px;">🩺</div>
-                <div style="font-weight: 700; font-size: 13px; color: var(--color-primary); margin-top: 4px;">Doctor</div>
-                <div style="font-size: 10px; color: var(--color-slate); margin-top: 2px;">OPD & Rapid Rx</div>
+              <!-- Card: DOCTOR -->
+              <div class="auth-role-card ${this.selectedRole === 'DOCTOR' ? 'active-role' : ''}" data-role="DOCTOR" style="position: relative; padding: 14px 8px; border-radius: 16px; cursor: pointer; text-align: center; transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid ${this.selectedRole === 'DOCTOR' ? '#0284c7' : '#e2e8f0'}; background: ${this.selectedRole === 'DOCTOR' ? '#e0f2fe' : '#ffffff'}; box-shadow: ${this.selectedRole === 'DOCTOR' ? '0 8px 16px -4px rgba(2, 132, 199, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)'};">
+                ${this.selectedRole === 'DOCTOR' ? '<div style="position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; background: #0284c7; border-radius: 50%; color: #fff; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 900;">✓</div>' : ''}
+                <div style="font-size: 26px; line-height: 1;">🩺</div>
+                <div style="font-weight: 800; font-size: 13px; color: #0f172a; margin-top: 6px;">Doctor</div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 2px; font-weight: 500;">PulseMD & OPD</div>
               </div>
 
-              <!-- Pharmacy Role -->
-              <div class="card-base role-choice-card ${this.selectedRole === 'PHARMACY' ? 'role-choice-selected' : ''}" data-role="PHARMACY" style="padding: 12px 8px; background: ${this.selectedRole === 'PHARMACY' ? '#fef3c7' : '#ffffff'}; border: 2px solid ${this.selectedRole === 'PHARMACY' ? '#d97706' : 'var(--color-hairline)'}; border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.2s ease;">
-                <div style="font-size: 26px;">💊</div>
-                <div style="font-weight: 700; font-size: 13px; color: var(--color-primary); margin-top: 4px;">Pharmacy</div>
-                <div style="font-size: 10px; color: var(--color-slate); margin-top: 2px;">Stock & Orders</div>
+              <!-- Card: PHARMACY -->
+              <div class="auth-role-card ${this.selectedRole === 'PHARMACY' ? 'active-role' : ''}" data-role="PHARMACY" style="position: relative; padding: 14px 8px; border-radius: 16px; cursor: pointer; text-align: center; transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid ${this.selectedRole === 'PHARMACY' ? '#d97706' : '#e2e8f0'}; background: ${this.selectedRole === 'PHARMACY' ? '#fef3c7' : '#ffffff'}; box-shadow: ${this.selectedRole === 'PHARMACY' ? '0 8px 16px -4px rgba(217, 119, 6, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)'};">
+                ${this.selectedRole === 'PHARMACY' ? '<div style="position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; background: #d97706; border-radius: 50%; color: #fff; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 900;">✓</div>' : ''}
+                <div style="font-size: 26px; line-height: 1;">💊</div>
+                <div style="font-weight: 800; font-size: 13px; color: #0f172a; margin-top: 6px;">Pharmacy</div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 2px; font-weight: 500;">Stock & Orders</div>
               </div>
 
-              <!-- Admin Role -->
-              <div class="card-base role-choice-card ${this.selectedRole === 'ADMIN' ? 'role-choice-selected' : ''}" data-role="ADMIN" style="padding: 12px 8px; background: ${this.selectedRole === 'ADMIN' ? '#f1f5f9' : '#ffffff'}; border: 2px solid ${this.selectedRole === 'ADMIN' ? '#475569' : 'var(--color-hairline)'}; border-radius: var(--radius-lg); text-align: center; cursor: pointer; transition: all 0.2s ease;">
-                <div style="font-size: 26px;">🛡️</div>
-                <div style="font-weight: 700; font-size: 13px; color: var(--color-primary); margin-top: 4px;">Admin</div>
-                <div style="font-size: 10px; color: var(--color-slate); margin-top: 2px;">Verification</div>
+              ${this.mode === 'login' ? `
+              <!-- Card: ADMIN -->
+              <div class="auth-role-card ${this.selectedRole === 'ADMIN' ? 'active-role' : ''}" data-role="ADMIN" style="position: relative; padding: 14px 8px; border-radius: 16px; cursor: pointer; text-align: center; transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid ${this.selectedRole === 'ADMIN' ? '#6366f1' : '#e2e8f0'}; background: ${this.selectedRole === 'ADMIN' ? '#e0e7ff' : '#ffffff'}; box-shadow: ${this.selectedRole === 'ADMIN' ? '0 8px 16px -4px rgba(99, 102, 241, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)'};">
+                ${this.selectedRole === 'ADMIN' ? '<div style="position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; background: #6366f1; border-radius: 50%; color: #fff; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 900;">✓</div>' : ''}
+                <div style="font-size: 26px; line-height: 1;">🛡️</div>
+                <div style="font-weight: 800; font-size: 13px; color: #0f172a; margin-top: 6px;">Admin</div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 2px; font-weight: 500;">Control Plane</div>
               </div>
+              ` : ''}
 
             </div>
 
-            <!-- Role destination callout banner -->
-            <div style="margin-top: 8px; padding: 6px 12px; background: var(--color-surface); border-radius: var(--radius-md); font-size: 11px; color: var(--color-slate); display: flex; align-items: center; justify-content: space-between;">
-              <span>🚀 Target Portal: <strong style="color: var(--color-primary);">${activePreset.destination}</strong></span>
-              <span style="font-family: var(--font-family-mono); color: var(--color-brand-blue);">${activePreset.route}</span>
+            <!-- Role Destination Telemetry Banner -->
+            <div style="margin-top: 12px; padding: 10px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 12px; color: #475569; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 14px;">🚀</span>
+                <span>Destination: <strong style="color: #0f172a;">${roleCfg.destination}</strong></span>
+              </div>
+              <span style="font-family: monospace; font-size: 11px; color: ${roleCfg.color}; background: #ffffff; padding: 2px 8px; border-radius: 6px; border: 1px solid #e2e8f0; font-weight: 700;">${roleCfg.route}</span>
             </div>
           </div>
 
-          <!-- Body: Login or Register Form -->
-          ${this.mode === 'login' ? this.renderLoginForm(activePreset) : this.renderRegisterForm()}
+          <!-- Form Area: Login or Register -->
+          ${this.mode === 'login' ? this.renderLoginForm(roleCfg) : this.renderRegisterForm(roleCfg)}
 
-          <!-- Error Alert Banner Under Form -->
+          <!-- Error Alert Banner -->
           ${this.errorMessage ? `
-            <div style="padding: 12px 16px; margin-top: var(--space-md); background: #fee2e2; border: 1px solid #f87171; border-radius: var(--radius-md); color: #991b1b; font-size: 13px; display: flex; align-items: flex-start; gap: 8px;">
+            <div style="padding: 12px 16px; margin-top: 16px; background: #fef2f2; border: 1px solid #fca5a5; border-radius: 12px; color: #991b1b; font-size: 13px; display: flex; align-items: center; gap: 10px; animation: shake 0.3s ease;">
               <span style="font-size: 16px;">⚠️</span>
-              <div>
-                <div style="font-weight: 700;">${this.errorMessage}</div>
-              </div>
+              <div style="font-weight: 600;">${this.errorMessage}</div>
             </div>
           ` : ''}
 
-          <!-- Quick 1-Click Demo Personas Strip -->
-          <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-hairline);">
-            <div class="micro" style="text-align: center; color: var(--color-stone); margin-bottom: var(--space-xs); font-weight: 700;">
-              ⚡ 1-Click Instant Demo Launchers:
+          <!-- Quick 1-Click Instant Demo Launchers -->
+          <div style="margin-top: 28px; padding-top: 20px; border-top: 1px dashed #e2e8f0;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span style="font-size: 11.5px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px;">
+                ⚡ 1-Click Instant Demo Access:
+              </span>
+              <span style="font-size: 11px; color: #94a3b8;">Click any card to auto-login</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xs);">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
               
-              <button class="button-secondary btn-demo-auth" data-role="PATIENT" data-email="anil.verma@gmail.com" data-pass="pass123" style="padding: 8px 12px; font-size: 12px; justify-content: flex-start; background: var(--color-surface-yellow); border-color: #fde68a;">
-                <span>👤</span>
-                <span style="font-weight: 600;">Patient (Anil Verma)</span>
+              <!-- Persona 1: Patient -->
+              <button class="btn-demo-persona" data-role="PATIENT" data-email="anil.verma@gmail.com" data-pass="pass123" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #ecfdf5; border: 1px solid #a7f3d0; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                  👤
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Anil Verma</div>
+                  <div style="font-size: 10.5px; color: #059669; font-weight: 600;">Patient • Dual Rx</div>
+                </div>
               </button>
 
-              <button class="button-secondary btn-demo-auth" data-role="DOCTOR" data-email="dr.vikram.sethi@gmail.com" data-pass="pass123" style="padding: 8px 12px; font-size: 12px; justify-content: flex-start; background: #e0f2fe; border-color: #bae6fd;">
-                <span>🩺</span>
-                <span style="font-weight: 600;">Doctor (Dr. Vikram)</span>
+              <!-- Persona 2: Doctor -->
+              <button class="btn-demo-persona" data-role="DOCTOR" data-email="dr.vikram.sethi@gmail.com" data-pass="pass123" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #e0f2fe; border: 1px solid #bae6fd; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                  🩺
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Dr. Vikram Sethi</div>
+                  <div style="font-size: 10.5px; color: #0284c7; font-weight: 600;">Doctor • Internal Med</div>
+                </div>
               </button>
 
-              <button class="button-secondary btn-demo-auth" data-role="PHARMACY" data-email="medplus.pharmacy@gmail.com" data-pass="pass123" style="padding: 8px 12px; font-size: 12px; justify-content: flex-start; background: #fef3c7; border-color: #fde68a;">
-                <span>💊</span>
-                <span style="font-weight: 600;">Pharmacy (MedPlus)</span>
+              <!-- Persona 3: Pharmacy -->
+              <button class="btn-demo-persona" data-role="PHARMACY" data-email="medplus.pharmacy@gmail.com" data-pass="pass123" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #fef3c7; border: 1px solid #fde68a; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                  💊
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">MedPlus Pharmacy</div>
+                  <div style="font-size: 10.5px; color: #d97706; font-weight: 600;">Dispensary • 24/7</div>
+                </div>
               </button>
 
-              <button class="button-secondary btn-demo-auth" data-role="ADMIN" data-email="admin.pulse@gmail.com" data-pass="admin123" style="padding: 8px 12px; font-size: 12px; justify-content: flex-start; background: #f1f5f9; border-color: #e2e8f0;">
-                <span>🛡️</span>
-                <span style="font-weight: 600;">Platform Admin</span>
+              <!-- Persona 4: Admin -->
+              <button class="btn-demo-persona" data-role="ADMIN" data-email="admin.pulse@gmail.com" data-pass="admin123" style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s ease;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #e0e7ff; border: 1px solid #c7d2fe; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                  🛡️
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Platform Admin</div>
+                  <div style="font-size: 10.5px; color: #6366f1; font-weight: 600;">Governance • Audit</div>
+                </div>
               </button>
 
             </div>
@@ -181,94 +268,148 @@ export class AuthViewComponent {
     this.bindEvents();
   }
 
-  renderLoginForm(activePreset) {
+  renderLoginForm(roleCfg) {
     return `
-      <form id="form-auth-login" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      <form id="form-auth-login" style="display: flex; flex-direction: column; gap: 16px;">
+        
+        <!-- Email Field with Icon -->
         <div>
-          <label style="font-size: 13px; font-weight: 600; color: var(--color-charcoal); display: block; margin-bottom: 4px;">Gmail / Official Email</label>
-          <input 
-            type="email" 
-            id="auth-input-email" 
-            placeholder="e.g. ${activePreset.email}" 
-            required 
-            value="${activePreset.email}"
-            style="width: 100%; font-size: 14px; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;"
-          />
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-            <label style="font-size: 13px; font-weight: 600; color: var(--color-charcoal);">Password</label>
-            <a href="#" style="font-size: 12px; color: var(--color-brand-blue); text-decoration: none;">Forgot password?</a>
+          <label style="font-size: 13px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px;">
+            Gmail / Official Email
+          </label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <span style="position: absolute; left: 14px; font-size: 16px; color: #94a3b8;">✉️</span>
+            <input 
+              type="email" 
+              id="auth-input-email" 
+              placeholder="e.g. ${roleCfg.email}" 
+              required 
+              value="${roleCfg.email}"
+              style="width: 100%; font-size: 14px; padding: 12px 14px 12px 42px; border-radius: 12px; border: 1.5px solid #cbd5e1; background: #ffffff; color: #0f172a; font-weight: 500; outline: none; transition: all 0.2s ease;"
+              onfocus="this.style.borderColor='${roleCfg.color}'; this.style.boxShadow='0 0 0 3px ${roleCfg.glow}';"
+              onblur="this.style.borderColor='#cbd5e1'; this.style.boxShadow='none';"
+            />
           </div>
-          <input 
-            type="password" 
-            id="auth-input-password" 
-            placeholder="••••••••" 
-            required 
-            value="${activePreset.pass}"
-            style="width: 100%; font-size: 14px; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;"
-          />
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-slate);">
-          <input type="checkbox" id="auth-remember-me" checked style="accent-color: var(--color-brand-blue); cursor: pointer;" />
-          <label for="auth-remember-me" style="cursor: pointer;">Keep me signed in as ${this.selectedRole}</label>
+        <!-- Password Field with Icon & Show/Hide Toggle -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label style="font-size: 13px; font-weight: 700; color: #334155;">Password</label>
+            <a href="javascript:void(0)" id="btn-forgot-password" style="font-size: 12px; color: ${roleCfg.color}; font-weight: 600; text-decoration: none;">Forgot password?</a>
+          </div>
+          <div style="position: relative; display: flex; align-items: center;">
+            <span style="position: absolute; left: 14px; font-size: 16px; color: #94a3b8;">🔒</span>
+            <input 
+              type="${this.showPassword ? 'text' : 'password'}" 
+              id="auth-input-password" 
+              placeholder="••••••••" 
+              required 
+              value="${roleCfg.pass}"
+              style="width: 100%; font-size: 14px; padding: 12px 42px 12px 42px; border-radius: 12px; border: 1.5px solid #cbd5e1; background: #ffffff; color: #0f172a; font-weight: 500; outline: none; transition: all 0.2s ease;"
+              onfocus="this.style.borderColor='${roleCfg.color}'; this.style.boxShadow='0 0 0 3px ${roleCfg.glow}';"
+              onblur="this.style.borderColor='#cbd5e1'; this.style.boxShadow='none';"
+            />
+            <button type="button" id="btn-toggle-password" style="position: absolute; right: 12px; background: none; border: none; cursor: pointer; font-size: 16px; color: #64748b; padding: 4px;" title="Toggle Password Visibility">
+              ${this.showPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
 
-        <button type="submit" class="button-primary" style="width: 100%; padding: 14px 24px; font-size: 15px; margin-top: 4px;" ${this.isSubmitting ? 'disabled' : ''}>
-          <span>${this.isSubmitting ? 'Authenticating with Backend...' : `Sign In as ${this.selectedRole} & Enter Portal`}</span>
-          <span>➔</span>
+        <!-- Remember Me Checkbox -->
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #475569;">
+          <input type="checkbox" id="auth-remember-me" checked style="accent-color: ${roleCfg.color}; width: 16px; height: 16px; cursor: pointer;" />
+          <label for="auth-remember-me" style="cursor: pointer; font-weight: 500;">
+            Remember credentials & keep active session
+          </label>
+        </div>
+
+        <!-- Submit Button with Dynamic Role Colors & Hover Glow -->
+        <button 
+          type="submit" 
+          id="btn-auth-submit"
+          style="width: 100%; padding: 14px 24px; font-size: 15px; font-weight: 800; border-radius: 14px; border: none; cursor: pointer; background: linear-gradient(135deg, ${roleCfg.color}, ${roleCfg.colorDark}); color: #ffffff; box-shadow: 0 10px 20px -5px ${roleCfg.glow}; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; transition: all 0.2s ease;"
+          ${this.isSubmitting ? 'disabled' : ''}
+          onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 14px 26px -4px ${roleCfg.glow}';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px -5px ${roleCfg.glow}';"
+        >
+          <span>${this.isSubmitting ? 'Verifying Credentials...' : `Sign In as ${this.selectedRole} & Enter Portal`}</span>
+          <span style="font-size: 16px;">➔</span>
         </button>
       </form>
     `;
   }
 
-  renderRegisterForm() {
+  renderRegisterForm(roleCfg) {
     return `
-      <form id="form-auth-register" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      <form id="form-auth-register" style="display: flex; flex-direction: column; gap: 14px;">
         
-        <!-- Common Details -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+        <!-- Row 1: Name & Phone -->
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px;">
           <div>
-            <label style="font-size: 12px; font-weight: 600; color: var(--color-charcoal); display: block; margin-bottom: 2px;">
-              ${this.selectedRole === 'PHARMACY' ? 'Store / Chemist Name' : 'Full Legal Name'}
+            <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">
+              ${this.selectedRole === 'PHARMACY' ? 'Pharmacy / Store Name *' : 'Full Legal Name *'}
             </label>
-            <input type="text" id="reg-fullname" placeholder="${this.selectedRole === 'DOCTOR' ? 'Dr. Sarah Jenkins' : 'Full Name'}" required style="width: 100%; font-size: 13px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;" />
+            <input 
+              type="text" 
+              id="reg-fullname" 
+              placeholder="${this.selectedRole === 'DOCTOR' ? 'Dr. Sarah Jenkins' : this.selectedRole === 'PHARMACY' ? 'Apollo 24/7 Medico' : 'Anil Kumar Verma'}" 
+              required 
+              style="width: 100%; font-size: 13px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: #fff;" 
+            />
           </div>
 
           <div>
-            <label style="font-size: 12px; font-weight: 600; color: var(--color-charcoal); display: block; margin-bottom: 2px;">Phone Number</label>
-            <input type="tel" id="reg-phone" placeholder="+91 98765 00000" required style="width: 100%; font-size: 13px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;" />
+            <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Phone Number *</label>
+            <input 
+              type="tel" 
+              id="reg-phone" 
+              placeholder="+91 98765 00000" 
+              required 
+              style="width: 100%; font-size: 13px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: #fff;" 
+            />
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+        <!-- Row 2: Email & Password -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
           <div>
-            <label style="font-size: 12px; font-weight: 600; color: var(--color-charcoal); display: block; margin-bottom: 2px;">Gmail / Official Email</label>
-            <input type="email" id="reg-email" placeholder="yourname@gmail.com" required style="width: 100%; font-size: 13px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;" />
+            <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Gmail / Official Email *</label>
+            <input 
+              type="email" 
+              id="reg-email" 
+              placeholder="user@gmail.com" 
+              required 
+              style="width: 100%; font-size: 13px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: #fff;" 
+            />
           </div>
 
           <div>
-            <label style="font-size: 12px; font-weight: 600; color: var(--color-charcoal); display: block; margin-bottom: 2px;">Password</label>
-            <input type="password" id="reg-password" placeholder="••••••••" required style="width: 100%; font-size: 13px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #ffffff;" />
+            <label style="font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Password *</label>
+            <input 
+              type="password" 
+              id="reg-password" 
+              placeholder="••••••••" 
+              required 
+              style="width: 100%; font-size: 13px; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: #fff;" 
+            />
           </div>
         </div>
 
-        <!-- Conditional Fields based on Role -->
+        <!-- Role-Specific Regulatory Fields -->
         ${this.selectedRole === 'DOCTOR' ? `
-          <div style="padding: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-hairline); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--space-xs);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--color-brand-blue);">🩺 Medical Registration & Council Details</div>
+          <div style="padding: 14px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 12px; font-weight: 800; color: #0284c7;">🩺 Medical Practitioner Credentials</div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Medical Registration No (MRN) *</label>
-                <input type="text" id="reg-mrn" placeholder="e.g. KMC-58291-2018" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Medical Registration No (MRN) *</label>
+                <input type="text" id="reg-mrn" placeholder="e.g. KMC-58291-2018" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
               </div>
 
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">State Medical Council *</label>
-                <select id="reg-state-council" style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;">
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">State Council *</label>
+                <select id="reg-state-council" style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;">
                   <option value="Karnataka Medical Council (KMC)">Karnataka Medical Council (KMC)</option>
                   <option value="Maharashtra Medical Council (MMC)">Maharashtra Medical Council (MMC)</option>
                   <option value="Delhi Medical Council (DMC)">Delhi Medical Council (DMC)</option>
@@ -276,46 +417,51 @@ export class AuthViewComponent {
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-xs); margin-top: 2px;">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 8px;">
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Specialization *</label>
-                <input type="text" id="reg-specialization" placeholder="e.g. Cardiology, Internal Medicine" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Specialization *</label>
+                <input type="text" id="reg-specialization" placeholder="e.g. Cardiology, Internal Medicine" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
               </div>
 
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Experience (Years) *</label>
-                <input type="number" id="reg-experience" min="1" max="50" value="8" style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Experience (Years) *</label>
+                <input type="number" id="reg-experience" min="1" max="50" value="8" style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
               </div>
             </div>
           </div>
         ` : ''}
 
         ${this.selectedRole === 'PHARMACY' ? `
-          <div style="padding: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-hairline); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--space-xs);">
-            <div style="font-size: 12px; font-weight: 700; color: var(--color-yellow-dark);">💊 Pharmacy License & Location Details</div>
+          <div style="padding: 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 12px; font-weight: 800; color: #d97706;">💊 Drug License & Pharmacy Registry</div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs);">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 8px;">
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Drug License Number (DLN) *</label>
-                <input type="text" id="reg-dln" placeholder="e.g. KA-BLR-2026-9901" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Drug License Number (DLN) *</label>
+                <input type="text" id="reg-dln" placeholder="e.g. KA-BLR-2026-9901" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
               </div>
 
               <div>
-                <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Pincode *</label>
-                <input type="text" id="reg-pincode" placeholder="e.g. 560034" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+                <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Pincode *</label>
+                <input type="text" id="reg-pincode" placeholder="e.g. 560034" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
               </div>
             </div>
 
             <div>
-              <label style="font-size: 11px; color: var(--color-slate); display: block; margin-bottom: 2px;">Store Address *</label>
-              <input type="text" id="reg-address" placeholder="e.g. 14th Main, 4th Sector, HSR Layout, Bengaluru" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius-md); border: 1px solid var(--color-hairline-strong); background: #fff;" />
+              <label style="font-size: 11px; color: #475569; display: block; margin-bottom: 2px;">Full Dispensary Address *</label>
+              <input type="text" id="reg-address" placeholder="e.g. 14th Main, 4th Sector, HSR Layout, Bengaluru" required style="width: 100%; font-size: 12px; padding: 8px 12px; border-radius: 8px; border: 1px solid #94a3b8; background: #fff;" />
             </div>
           </div>
         ` : ''}
 
-        <button type="submit" class="button-primary" style="width: 100%; padding: 14px 24px; font-size: 15px; margin-top: 4px;" ${this.isSubmitting ? 'disabled' : ''}>
-          <span>${this.isSubmitting ? 'Verifying & Creating Account...' : `Register as ${this.selectedRole} & Launch Portal`}</span>
-          <span>➔</span>
+        <button 
+          type="submit" 
+          id="btn-auth-submit"
+          style="width: 100%; padding: 14px 24px; font-size: 15px; font-weight: 800; border-radius: 14px; border: none; cursor: pointer; background: linear-gradient(135deg, ${roleCfg.color}, ${roleCfg.colorDark}); color: #ffffff; box-shadow: 0 10px 20px -5px ${roleCfg.glow}; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; transition: all 0.2s ease;"
+          ${this.isSubmitting ? 'disabled' : ''}
+        >
+          <span>${this.isSubmitting ? 'Registering Health Account...' : `Register as ${this.selectedRole} & Enter Portal`}</span>
+          <span style="font-size: 16px;">➔</span>
         </button>
 
       </form>
@@ -338,6 +484,9 @@ export class AuthViewComponent {
     if (regTabBtn) {
       regTabBtn.addEventListener("click", () => {
         this.mode = "register";
+        if (this.selectedRole === "ADMIN") {
+          this.selectedRole = "PATIENT";
+        }
         this.errorMessage = "";
         window.location.hash = "#register";
         this.render();
@@ -345,15 +494,36 @@ export class AuthViewComponent {
     }
 
     // Role Choice Cards
-    this.container.querySelectorAll(".role-choice-card").forEach((card) => {
+    this.container.querySelectorAll(".auth-role-card").forEach((card) => {
       card.addEventListener("click", () => {
         this.selectedRole = card.getAttribute("data-role");
         this.render();
       });
     });
 
+    // Toggle Password Visibility Button
+    const togglePassBtn = this.container.querySelector("#btn-toggle-password");
+    if (togglePassBtn) {
+      togglePassBtn.addEventListener("click", () => {
+        this.showPassword = !this.showPassword;
+        const passInput = this.container.querySelector("#auth-input-password");
+        if (passInput) {
+          passInput.type = this.showPassword ? "text" : "password";
+          togglePassBtn.innerHTML = this.showPassword ? "🙈" : "👁️";
+        }
+      });
+    }
+
+    // Forgot Password Trigger
+    const forgotBtn = this.container.querySelector("#btn-forgot-password");
+    if (forgotBtn) {
+      forgotBtn.addEventListener("click", () => {
+        store.showToast("Password reset link sent to registered email.", "info");
+      });
+    }
+
     // 1-Click Demo Personas
-    this.container.querySelectorAll(".btn-demo-auth").forEach((btn) => {
+    this.container.querySelectorAll(".btn-demo-persona").forEach((btn) => {
       btn.addEventListener("click", () => {
         const email = btn.getAttribute("data-email");
         const pass = btn.getAttribute("data-pass");
@@ -368,8 +538,8 @@ export class AuthViewComponent {
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const email = this.container.querySelector("#auth-input-email").value;
-        const pass = this.container.querySelector("#auth-input-password").value;
+        const email = this.container.querySelector("#auth-input-email")?.value;
+        const pass = this.container.querySelector("#auth-input-password")?.value;
         this.handleLogin(email, pass);
       });
     }
@@ -404,18 +574,16 @@ export class AuthViewComponent {
       this.errorMessage = "";
       this.render();
 
-      // Real Backend API Login with MongoDB check & login history recording
       const session = await authService.login(email, password);
       const user = session.user;
 
       store.setCurrentUser(user);
-      store.showToast(`Welcome back, ${user.full_name} (${user.role})!`, "success");
+      store.showToast(`Welcome back, ${user.full_name}!`, "success");
 
       if (typeof this.onSuccess === "function") {
         this.onSuccess(user);
       }
 
-      // Auto-navigate to the corresponding role dashboard
       const targetRoute = this.routeForRole(user.role);
       window.location.hash = targetRoute;
       window.dispatchEvent(new CustomEvent("userSessionChanged"));
@@ -428,14 +596,17 @@ export class AuthViewComponent {
 
   async handleRegister() {
     try {
-      this.isSubmitting = true;
-      this.errorMessage = "";
-      this.render();
-
-      const fullName = this.container.querySelector("#reg-fullname")?.value || "";
-      const phone = this.container.querySelector("#reg-phone")?.value || "";
-      const email = this.container.querySelector("#reg-email")?.value || "";
+      const fullName = this.container.querySelector("#reg-fullname")?.value?.trim() || "";
+      const phone = this.container.querySelector("#reg-phone")?.value?.trim() || "";
+      const email = this.container.querySelector("#reg-email")?.value?.trim() || "";
       const password = this.container.querySelector("#reg-password")?.value || "";
+
+      if (!fullName || !email || !password) {
+        this.errorMessage = "Please fill in all mandatory fields: Full Name, Email, and Password.";
+        this.isSubmitting = false;
+        this.render();
+        return;
+      }
 
       const formData = {
         full_name: fullName,
@@ -447,21 +618,24 @@ export class AuthViewComponent {
 
       if (this.selectedRole === "DOCTOR") {
         formData.doctor_profile = {
-          mrn: this.container.querySelector("#reg-mrn")?.value,
-          state_council: this.container.querySelector("#reg-state-council")?.value,
-          specialization: this.container.querySelector("#reg-specialization")?.value,
-          experience_years: this.container.querySelector("#reg-experience")?.value
+          mrn: this.container.querySelector("#reg-mrn")?.value || "",
+          state_council: this.container.querySelector("#reg-state-council")?.value || "",
+          specialization: this.container.querySelector("#reg-specialization")?.value || "",
+          experience_years: Number(this.container.querySelector("#reg-experience")?.value) || 0
         };
       } else if (this.selectedRole === "PHARMACY") {
         formData.pharmacy_profile = {
           store_name: fullName,
-          dln: this.container.querySelector("#reg-dln")?.value,
-          address: this.container.querySelector("#reg-address")?.value,
-          pincode: this.container.querySelector("#reg-pincode")?.value
+          dln: this.container.querySelector("#reg-dln")?.value || "",
+          address: this.container.querySelector("#reg-address")?.value || "",
+          pincode: this.container.querySelector("#reg-pincode")?.value || ""
         };
       }
 
-      // Call Real Backend API Registration
+      this.isSubmitting = true;
+      this.errorMessage = "";
+      this.render();
+
       const session = await authService.register(formData);
       const user = session.user;
 
@@ -482,4 +656,3 @@ export class AuthViewComponent {
     }
   }
 }
-

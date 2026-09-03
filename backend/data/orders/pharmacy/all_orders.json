@@ -1,0 +1,956 @@
+[
+  {
+    "id": "ord-1156",
+    "orderNumber": "ORD-1156",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-003",
+    "pharmacyName": "Jan Aushadhi Generic Kendra",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "DISPENSED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T06:01:32.266Z",
+    "updatedAt": "2026-09-03T06:02:20.117Z"
+  },
+  {
+    "id": "ord-7276",
+    "orderNumber": "ORD-7276",
+    "patientId": "usr-patient-mtl467hl",
+    "patientName": "Prathamesh",
+    "pharmacyId": "usr-pharma-003",
+    "pharmacyName": "Jan Aushadhi Generic Kendra",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PACKED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T06:01:32.258Z",
+    "updatedAt": "2026-09-03T06:03:05.269Z"
+  },
+  {
+    "id": "ord-9972",
+    "orderNumber": "ORD-9972",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-002",
+    "pharmacyName": "Apollo Pharmacy Wellness Hub",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "READY",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-4153",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T05:32:07.669Z",
+    "updatedAt": "2026-09-03T06:01:49.570Z"
+  },
+  {
+    "id": "ord-9668",
+    "orderNumber": "ORD-9668",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-002",
+    "pharmacyName": "Apollo Pharmacy Wellness Hub",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "PLACED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-3552",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T05:32:07.659Z",
+    "updatedAt": "2026-09-03T05:32:07.659Z"
+  },
+  {
+    "id": "ord-9337",
+    "orderNumber": "ORD-9337",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "PLACED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-9093",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T05:14:35.745Z",
+    "updatedAt": "2026-09-03T05:14:35.745Z"
+  },
+  {
+    "id": "ord-7053",
+    "orderNumber": "ORD-7053",
+    "patientId": "usr-pharma-001",
+    "patientName": "MedPlus 24/7 Super Pharmacy",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "PLACED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-6921",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T05:14:35.723Z",
+    "updatedAt": "2026-09-03T05:14:35.723Z"
+  },
+  {
+    "id": "ord-8094",
+    "orderNumber": "ORD-8094",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-006",
+    "pharmacyName": "Frank Ross Pharmacy & Surgical",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "PLACED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-6321",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T04:57:16.650Z",
+    "updatedAt": "2026-09-03T04:57:16.650Z"
+  },
+  {
+    "id": "ord-6717",
+    "orderNumber": "ORD-6717",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-006",
+    "pharmacyName": "Frank Ross Pharmacy & Surgical",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "PLACED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-9873",
+    "deliveryAddress": null,
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T04:57:16.638Z",
+    "updatedAt": "2026-09-03T04:57:16.638Z"
+  },
+  {
+    "id": "ord-2498",
+    "orderNumber": "ORD-2498",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:56:53.685Z",
+    "updatedAt": "2026-09-03T04:56:53.685Z"
+  },
+  {
+    "id": "ord-8731",
+    "orderNumber": "ORD-8731",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:56:53.675Z",
+    "updatedAt": "2026-09-03T04:56:53.675Z"
+  },
+  {
+    "id": "ord-9836",
+    "orderNumber": "ORD-9836",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-002",
+    "pharmacyName": "Apollo Pharmacy Wellness Hub",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:55:25.627Z",
+    "updatedAt": "2026-09-03T04:55:25.627Z"
+  },
+  {
+    "id": "ord-4693",
+    "orderNumber": "ORD-4693",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-002",
+    "pharmacyName": "Apollo Pharmacy Wellness Hub",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:55:25.599Z",
+    "updatedAt": "2026-09-03T04:55:25.599Z"
+  },
+  {
+    "id": "ord-2726",
+    "orderNumber": "ORD-2726",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:54:12.067Z",
+    "updatedAt": "2026-09-03T04:54:12.067Z"
+  },
+  {
+    "id": "ord-7702",
+    "orderNumber": "ORD-7702",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg Generic",
+        "quantity": 10,
+        "price": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40",
+        "drugName": "Pantoprazole 40mg Generic",
+        "quantity": 7,
+        "price": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg Generic",
+        "quantity": 6,
+        "price": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 30,
+    "totalAmount": 136,
+    "status": "PLACED",
+    "fulfillmentType": "HOME_DELIVERY",
+    "pickupToken": null,
+    "deliveryAddress": "80 Feet Road, Koramangala, Bengaluru",
+    "estimatedMinutes": 35,
+    "created_at": "2026-09-03T04:54:11.999Z",
+    "updatedAt": "2026-09-03T04:54:11.999Z"
+  },
+  {
+    "id": "ord-4021",
+    "orderNumber": "ORD-4021",
+    "patientId": "usr-pat-001",
+    "patientName": "Anil Kumar Verma",
+    "pharmacyId": "usr-pharma-001",
+    "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+    "doctorId": "usr-doc-001",
+    "doctorName": "Dr. Vikram Sethi, MD",
+    "medicines": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg",
+        "quantity": 10,
+        "price": 60,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40 (Pantoprazole)",
+        "drugName": "Pantoprazole 40mg",
+        "quantity": 10,
+        "price": 32,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg",
+        "quantity": 10,
+        "price": 14,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "items": [
+      {
+        "name": "Jan Aushadhi Cefixime 200mg",
+        "drugName": "Cefixime 200mg",
+        "quantity": 10,
+        "price": 60,
+        "unitPrice": 60,
+        "isGeneric": true
+      },
+      {
+        "name": "Jan Aushadhi Pan 40 (Pantoprazole)",
+        "drugName": "Pantoprazole 40mg",
+        "quantity": 10,
+        "price": 32,
+        "unitPrice": 32,
+        "isGeneric": true
+      },
+      {
+        "name": "Paracetamol 650mg Generic",
+        "drugName": "Paracetamol 650mg",
+        "quantity": 10,
+        "price": 14,
+        "unitPrice": 14,
+        "isGeneric": true
+      }
+    ],
+    "subtotal": 106,
+    "deliveryFee": 0,
+    "totalAmount": 106,
+    "status": "DISPENSED",
+    "fulfillmentType": "COUNTER_PICKUP",
+    "pickupToken": "PK-2409",
+    "deliveryAddress": "80 Feet Rd, Koramangala, Bengaluru",
+    "estimatedMinutes": 10,
+    "created_at": "2026-09-03T04:51:35.698Z",
+    "updatedAt": "2026-09-03T04:55:00.166Z"
+  }
+]

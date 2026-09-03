@@ -1,0 +1,60 @@
+{
+  "id": "ord-2057",
+  "orderNumber": "ORD-2057",
+  "patientId": "usr-patient-mtl36azq",
+  "patientName": "Rahul Mukhopadhyay",
+  "pharmacyId": "usr-pharma-001",
+  "pharmacyName": "MedPlus 24/7 Super Pharmacy",
+  "doctorId": "usr-doc-001",
+  "doctorName": "Dr. Vikram Sethi, MD",
+  "medicines": [
+    {
+      "name": "Jan Aushadhi Cefixime 200mg",
+      "quantity": 10,
+      "price": 60,
+      "isGeneric": true
+    },
+    {
+      "name": "Jan Aushadhi Pan 40",
+      "quantity": 10,
+      "price": 32,
+      "isGeneric": true
+    },
+    {
+      "name": "Paracetamol 650mg Generic",
+      "quantity": 10,
+      "price": 14,
+      "isGeneric": true
+    }
+  ],
+  "items": [
+    {
+      "name": "Jan Aushadhi Cefixime 200mg",
+      "quantity": 10,
+      "price": 60,
+      "isGeneric": true
+    },
+    {
+      "name": "Jan Aushadhi Pan 40",
+      "quantity": 10,
+      "price": 32,
+      "isGeneric": true
+    },
+    {
+      "name": "Paracetamol 650mg Generic",
+      "quantity": 10,
+      "price": 14,
+      "isGeneric": true
+    }
+  ],
+  "subtotal": 106,
+  "deliveryFee": 0,
+  "totalAmount": 106,
+  "status": "DISPENSED",
+  "fulfillmentType": "COUNTER_PICKUP",
+  "pickupToken": "PK-7448",
+  "deliveryAddress": null,
+  "estimatedMinutes": 10,
+  "created_at": "2026-09-03T05:30:20.815Z",
+  "updatedAt": "2026-09-03T05:30:20.830Z"
+}
