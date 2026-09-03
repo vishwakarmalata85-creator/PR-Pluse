@@ -2,9 +2,12 @@
 # Dependencies & temporary files
 node_modules/
 scratch/
+# Environment variables (Secrets)
 .env
-.env.local
+.env*
+*.env
 backend/.env
+backend/.env*
 *.env.local
 
 # InsForge & AI agent skills

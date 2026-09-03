@@ -6,8 +6,7 @@
 
 const https = require("https");
 
-const GEMINI_API_KEY =
-  process.env.GEMINI_API_KEY || "AQ.Ab8RN6IvR9xsj9udCA4zQjGUsBfdCZ-ZLNJGUJE0LyUVFtIBWA";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 const SUPPORTED_MODELS = [
   "gemini-3.7-flash",
@@ -206,7 +205,7 @@ Return JSON ONLY matching this structure:
               data: parsedJson,
               model: `Google Gemini Vision (${model})`,
             });
-          } catch {}
+          } catch { }
         }
       }
     }
